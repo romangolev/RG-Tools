@@ -5,8 +5,7 @@
 		<FullClassName>RG_Tools.App</FullClassName>
 		<Text>RG Tools</Text>
 		<Description>A set of tools to enchanse Revit productivity</Description>
-		<!--+<VisibilityMode>AlwaysVisible</VisibilityMode>-->
-		<Assembly>C:\Users\1\Documents\Github\romangolev\RG-Tools\RG-Tools\bin\Debug\RG-Tools.dll</Assembly>
+		<Assembly>RG-Tools/RG-Tools.dll</Assembly>
 		<ClientId>C35BA1ED-3948-434B-9CE6-D3FBA82F3A01</ClientId>
 		<VendorId>Roman Golev</VendorId>
 		<VendorDescription>Roman Golev, https://www.romangolev.com</VendorDescription>

@@ -8,6 +8,7 @@ using Autodesk.Revit.UI;
 using Autodesk.Revit.Attributes;
 using RG_Tools;
 using System.Runtime.Remoting.Messaging;
+using System.Windows.Input;
 
 namespace RG_Tools.Tools_Coordination
 {
@@ -31,12 +32,13 @@ namespace RG_Tools.Tools_Coordination
 
             ViewFamilyType vf = Helper.get_ViewType(transaction, a, doc, "Navisworks");
 
+            bool SHIFT = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift);
 
             if (nw_ex.Count == 0)
             {
                 transaction.Start("Create Navis 3D View");
                 View3D view = createNavisView(doc, vf);
-                View3D adjview = adjustNavisView(doc, view);
+                View3D adjview = adjustNavisView(doc, view, SHIFT);
                 transaction.Commit();
                 uidoc.ActiveView = adjview;
                 return Result.Succeeded;
@@ -54,7 +56,8 @@ namespace RG_Tools.Tools_Coordination
                 TaskDialog mainDialog = new TaskDialog(taskName);
                 mainDialog.MainInstruction = "Navis View Detected!";
                 mainDialog.MainContent =
-                    "What would you like to do with existing 'Navis' view?";
+                    "What would you like to do with existing 'Navis' view?"+
+                    SHIFT;
 
                 // Add commmandLink options to task dialog
                 mainDialog.AddCommandLink(TaskDialogCommandLinkId.CommandLink1,
@@ -95,7 +98,7 @@ namespace RG_Tools.Tools_Coordination
                                     doc.Delete(vie.Id);
                                 }
                                 View3D nwnew = createNavisView(doc, vf);
-                                View3D nwadj = adjustNavisView(doc, nwnew);
+                                View3D nwadj = adjustNavisView(doc, nwnew, SHIFT);
                                 trans2.Commit();
                                 uidoc.ActiveView = nwadj;
                             }
@@ -123,7 +126,7 @@ namespace RG_Tools.Tools_Coordination
                             par.Set(ElementId.InvalidElementId);
                         }
 
-                        vv = adjustNavisView(doc, vv);
+                        vv = adjustNavisView(doc, vv, SHIFT);
                         transaction.Commit();
                         uidoc.ActiveView = vv;
                     }
@@ -166,7 +169,7 @@ namespace RG_Tools.Tools_Coordination
         }
 
         // Adjust Settings of Navis View
-        public static View3D adjustNavisView(Document doc, View3D view3D)
+        public static View3D adjustNavisView(Document doc, View3D view3D, bool SHIFT)
         {
             //Hide all annotations, import, point clouds on view
             view3D.AreAnnotationCategoriesHidden = true;
@@ -209,14 +212,17 @@ namespace RG_Tools.Tools_Coordination
             view3D.Discipline = ViewDiscipline.Coordination;
             //Hide sub-categories including lines
 
-
-
-            //Hide Revit links
-            try
+            //Hide Revit links for 
+            if (SHIFT == false)
             {
-                view3D.HideElements(Helper.Collect_Links(doc));
+                try
+                {
+                    view3D.HideElements(Helper.Collect_Links(doc));
+                }
+                catch {; }
             }
-            catch {; }
+
+
 
             return view3D;
         }
