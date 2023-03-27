@@ -61,7 +61,7 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Proporciona ayuda y información sobre el complemento.
         /// </summary>
         internal static string InfoTooltip {
             get {

@@ -13,6 +13,8 @@ using RG_Tools;
 using RG_Tools.Properties;
 using System.Reflection;
 using System.Resources;
+using AW = Autodesk.Windows;
+
 
 namespace RG_Tools
 { 
@@ -62,7 +64,7 @@ namespace RG_Tools
 
             // Create pushbutton Review Links
             PushButtonData buttondata2_1 =
-                new PushButtonData("Button2_1", "Review\nLinks", path, "RevitToolsRHI.Tools_Coordination.ReviewLinks");
+                new PushButtonData("Button2_1", "Review\nLinks", path, "RG_Tools.ReviewLinks");
             PushButton button2_1 = (PushButton)Panel2.AddItem(buttondata2_1);
             //button2_1.LargeImage = Helper.GetIconSource(Resources.reviewlinks24);
             //button2_1.Image = Helper.GetIconSource(Resources.reviewlinks16);
@@ -72,7 +74,7 @@ namespace RG_Tools
 
             // Create Coordination Plan
             PushButtonData buttondata2_5 =
-                new PushButtonData("Button13", "Coordination\nPlan", path, "RevitToolsRHI.Tools_Coordination.CoordPlan");
+                new PushButtonData("Button2_5", "Coordination\nPlan", path, "RG_Tools.CoordPlan");
 
             // Declare new pulldown button
             PulldownButtonData pullDownButtonData2_1 = new PulldownButtonData("PullButton2_1", "Navis");
@@ -88,27 +90,46 @@ namespace RG_Tools
             button2_5.ToolTip = "Creates Coordination Plan for opened project";
 
             PulldownButton pullbutton2_1 = stackedItems2_1[1] as PulldownButton;
-            Helper.StackSplitButton(tabName, Panel2, pullbutton2_1);
+            RibbonDesigner.StackSplitButton(tabName, Panel2, pullbutton2_1);
             PulldownButton pullbutton2_2 = stackedItems2_1[2] as PulldownButton;
-            Helper.StackSplitButton(tabName, Panel2, pullbutton2_2);
+            RibbonDesigner.StackSplitButton(tabName, Panel2, pullbutton2_2);
 
-            // Create pushbutton Navis
+            
+
+
+            // Declare pushbutton Navis
             PushButtonData buttondata2_3 =
-                new PushButtonData("Button2_3", "Navis\nView", path, "RG_Tools.Tools_Coordination.NavisView");
-            PushButton button2_3 = pullbutton2_1.AddPushButton(buttondata2_3);
+                new PushButtonData("Button2_3", "Navis View", path, "RG_Tools.NavisView");
+            //PushButton button2_3 = pullbutton2_1.AddPushButton(buttondata2_3);
+
+            // Declare pushbutton Coord Plan
+            PushButtonData buttondata2_4 =
+                new PushButtonData("Button2_4", "Coord Plan", path, "RG_Tools.CoordPlan");
+
+            // Create StackedItem
+            IList<Autodesk.Revit.UI.RibbonItem> ribbonItem = Panel2.AddStackedItems(buttondata2_3, buttondata2_4);
+
+            // Find Autodes.Windows.RibbonItems
+            var button2_3 = RibbonDesigner.GetButton(tabName, Panel2.Name, buttondata2_3.Name);
+            var button2_4 = RibbonDesigner.GetButton(tabName, Panel2.Name, buttondata2_4.Name);
+
+            button2_3.Size = AW.RibbonItemSize.Large;
+            button2_3.ShowText = true;
+            button2_4.Size = AW.RibbonItemSize.Large;
+            button2_4.ShowText = true;
+
+            //PushButton button2_3 = (PushButton)Panel2.AddItem(buttondata2_3);
             button2_3.LargeImage = Helper.GetIconSource(Icons.navis24);
             button2_3.Image = Helper.GetIconSource(Icons.navis16);
             button2_3.ToolTip = RibbonDesigner.GetLocalizedResource(lang,"NavisViewTooltip");
+            
 
+            //PushButton button2_4 = (PushButton)Panel2.AddItem(buttondata2_4);
+            button2_4.LargeImage = Helper.GetIconSource(Icons.coordplan24);
+            button2_4.Image = Helper.GetIconSource(Icons.coordplan16);
+            button2_4.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "CoordPlan");
 
-               
-            // Create pushbutton Navis FM
-            PushButtonData buttondata2_6 =
-                new PushButtonData("Button2_6", "Create Navis\nView FM", path, "RevitToolsRHI.Tools_Coordination.NavisViewFM");
-            PushButton button2_6 = pullbutton2_1.AddPushButton(buttondata2_6);
-            //button2_6.LargeImage = Helper.GetIconSource(Resources.navis24);
-            //button2_6.Image = Helper.GetIconSource(Resources.navis16);
-            button2_6.ToolTip = "Создаёт 3D вид Navis для координационного файла";
+            
 
             return Result.Succeeded;
         }

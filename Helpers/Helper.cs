@@ -270,24 +270,6 @@ namespace RG_Tools
             return null;
         }
 
-        public static void StackSplitButton(string tabname, RibbonPanel panel, RibbonItem ribbonItem)
-        {
-            string sid = string.Join(
-             "%",
-             "CustomCtrl_",
-             "CustomCtrl_",
-             tabname,
-             panel.Name,
-             ribbonItem.Name);
-
-            var splitButton = (Autodesk.Windows.RibbonSplitButton)
-              UIFramework.RevitRibbonControl.RibbonControl
-                .findRibbonItemById(sid);
-
-            splitButton.IsSplit = true;
-            splitButton.IsSynchronizedWithCurrentItem = true;
-        }
-
         public static bool FindSharedParameter(Document doc, string paramname, Guid guid)
         {
             var collector = new FilteredElementCollector(doc).WhereElementIsNotElementType()

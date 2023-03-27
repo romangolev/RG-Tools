@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="InfoTooltip" xml:space="preserve">
-    <value />
+    <value>Открывает справку и информацию о плагине</value>
   </data>
   <data name="NavisViewTooltip" xml:space="preserve">
     <value>Создаёт новый 3D вид Navisworks (Cкрывает аннотации, импорт DWG и т.д) 

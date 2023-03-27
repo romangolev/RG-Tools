@@ -156,6 +156,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="CoordPlan.cs" />
     <Compile Include="Help.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="NavisView.cs" />
@@ -185,7 +186,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="RibbonDesigner.cs" />
+    <Compile Include="Helpers\RibbonDesigner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Settings.settings">

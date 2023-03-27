@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="InfoTooltip" xml:space="preserve">
-    <value />
+    <value>Proporciona ayuda y información sobre el complemento</value>
   </data>
   <data name="NavisViewTooltip" xml:space="preserve">
     <value>Crea una nueva vista 3D para la exportación de Navisworks (Oculta todas las anotaciones, importaciones, etc.)

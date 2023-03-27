@@ -10,7 +10,7 @@ using RG_Tools;
 using System.Runtime.Remoting.Messaging;
 using System.Windows.Input;
 
-namespace RG_Tools.Tools_Coordination
+namespace RG_Tools
 {
     [TransactionAttribute(TransactionMode.Manual)]
     [RegenerationAttribute(RegenerationOption.Manual)]
