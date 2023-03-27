@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CoordPlan" xml:space="preserve">
+    <value>Creates coordination plan that unveils Project Base point and Survey Point </value>
+  </data>
   <data name="InfoTooltip" xml:space="preserve">
     <value>Provides help and information about add-in</value>
   </data>

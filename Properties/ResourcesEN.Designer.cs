@@ -61,6 +61,15 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creates coordination plan that unveils Project Base point and Survey Point .
+        /// </summary>
+        internal static string CoordPlan {
+            get {
+                return ResourceManager.GetString("CoordPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Provides help and information about add-in.
         /// </summary>
         internal static string InfoTooltip {

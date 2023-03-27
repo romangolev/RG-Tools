@@ -113,10 +113,7 @@ namespace RG_Tools
             var button2_3 = RibbonDesigner.GetButton(tabName, Panel2.Name, buttondata2_3.Name);
             var button2_4 = RibbonDesigner.GetButton(tabName, Panel2.Name, buttondata2_4.Name);
 
-            button2_3.Size = AW.RibbonItemSize.Large;
-            button2_3.ShowText = true;
-            button2_4.Size = AW.RibbonItemSize.Large;
-            button2_4.ShowText = true;
+
 
             //PushButton button2_3 = (PushButton)Panel2.AddItem(buttondata2_3);
             button2_3.LargeImage = Helper.GetIconSource(Icons.navis24);
@@ -129,7 +126,10 @@ namespace RG_Tools
             button2_4.Image = Helper.GetIconSource(Icons.coordplan16);
             button2_4.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "CoordPlan");
 
-            
+            button2_3.Size = AW.RibbonItemSize.Large;
+            button2_3.ShowText = true;
+            button2_4.Size = AW.RibbonItemSize.Large;
+            button2_4.ShowText = true;
 
             return Result.Succeeded;
         }

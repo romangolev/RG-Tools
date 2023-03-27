@@ -61,6 +61,15 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  Создаёт координационный план, на котором включена видимость для &quot;Project Base point&quot; и &quot;Survey Point&quot;.
+        /// </summary>
+        internal static string CoordPlan {
+            get {
+                return ResourceManager.GetString("CoordPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Открывает справку и информацию о плагине.
         /// </summary>
         internal static string InfoTooltip {
