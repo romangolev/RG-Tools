@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CoordPlan" xml:space="preserve">
+  <data name="CoordPlanTooltip" xml:space="preserve">
     <value>Creates coordination plan that unveils Project Base point and Survey Point </value>
   </data>
   <data name="InfoTooltip" xml:space="preserve">
@@ -127,5 +127,11 @@
     <value>Creates new 3D View for Navisworks export (Hides all annotations, imports, etc.) 
 Searches for existing 3D Views, gives an option to delete existing view and create
 new one or preserve existed.</value>
+  </data>
+  <data name="ReviewLinksTooltip" xml:space="preserve">
+    <value>Checks if Revit Links are pinned and if they belong to a separated individual worksets which names start from ##RVT_). Fixes those issues if found any</value>
+  </data>
+  <data name="SelectElementsByCategoryTooltip" xml:space="preserve">
+    <value>Selects all the Elements of defined Category in Active view</value>
   </data>
 </root>

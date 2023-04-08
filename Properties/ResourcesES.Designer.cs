@@ -63,9 +63,9 @@ namespace RG_Tools.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Crea un plan de coordinación que revela el Punto Base del Proyecto y el Punto de Levantamiento.
         /// </summary>
-        internal static string CoordPlan {
+        internal static string CoordPlanTooltip {
             get {
-                return ResourceManager.GetString("CoordPlan", resourceCulture);
+                return ResourceManager.GetString("CoordPlanTooltip", resourceCulture);
             }
         }
         
@@ -86,6 +86,15 @@ namespace RG_Tools.Properties {
         internal static string NavisViewTooltip {
             get {
                 return ResourceManager.GetString("NavisViewTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string ReviewLinksTooltip {
+            get {
+                return ResourceManager.GetString("ReviewLinksTooltip", resourceCulture);
             }
         }
     }

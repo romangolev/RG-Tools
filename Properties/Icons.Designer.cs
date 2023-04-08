@@ -63,6 +63,26 @@ namespace RG_Tools.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap allelems16 {
+            get {
+                object obj = ResourceManager.GetObject("allelems16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap allelems24 {
+            get {
+                object obj = ResourceManager.GetObject("allelems24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap coordplan16 {
             get {
                 object obj = ResourceManager.GetObject("coordplan16", resourceCulture);
@@ -116,6 +136,26 @@ namespace RG_Tools.Properties {
         internal static System.Drawing.Bitmap navis24 {
             get {
                 object obj = ResourceManager.GetObject("navis24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reviewlinks16 {
+            get {
+                object obj = ResourceManager.GetObject("reviewlinks16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reviewlinks24 {
+            get {
+                object obj = ResourceManager.GetObject("reviewlinks24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

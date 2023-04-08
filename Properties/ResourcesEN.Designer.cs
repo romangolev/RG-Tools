@@ -63,9 +63,9 @@ namespace RG_Tools.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Creates coordination plan that unveils Project Base point and Survey Point .
         /// </summary>
-        internal static string CoordPlan {
+        internal static string CoordPlanTooltip {
             get {
-                return ResourceManager.GetString("CoordPlan", resourceCulture);
+                return ResourceManager.GetString("CoordPlanTooltip", resourceCulture);
             }
         }
         
@@ -86,6 +86,24 @@ namespace RG_Tools.Properties {
         internal static string NavisViewTooltip {
             get {
                 return ResourceManager.GetString("NavisViewTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Checks if Revit Links are pinned and if they belong to a separated individual worksets which names start from ##RVT_). Fixes those issues if found any.
+        /// </summary>
+        internal static string ReviewLinksTooltip {
+            get {
+                return ResourceManager.GetString("ReviewLinksTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selects all the Elements of defined Category in Active view.
+        /// </summary>
+        internal static string SelectElementsByCategoryTooltip {
+            get {
+                return ResourceManager.GetString("SelectElementsByCategoryTooltip", resourceCulture);
             }
         }
     }

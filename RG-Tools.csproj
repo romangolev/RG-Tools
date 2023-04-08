@@ -14,6 +14,7 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'R2020|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,6 +25,7 @@
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <AssemblyName>$(AssemblyName)</AssemblyName>
     <RevitVersion>2020</RevitVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'R2021|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,6 +37,7 @@
     <AssemblyName>$(AssemblyName)</AssemblyName>
     <RevitVersion>2021</RevitVersion>
     <WarningLevel>1</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'R2022|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +48,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AssemblyName>$(AssemblyName)</AssemblyName>
     <RevitVersion>2022</RevitVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'R2023|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,6 +59,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AssemblyName>$(AssemblyName)</AssemblyName>
     <RevitVersion>2023</RevitVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -64,6 +69,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -187,6 +193,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Helpers\RibbonDesigner.cs" />
+    <Compile Include="WPF\SEBC.xaml.cs">
+      <DependentUpon>SEBC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectElementsByCategory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Settings.settings">
@@ -232,6 +242,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\info24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reviewlinks16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="WPF\SEBC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reviewlinks24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\allelems16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\allelems24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

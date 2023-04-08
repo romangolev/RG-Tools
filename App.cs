@@ -66,36 +66,9 @@ namespace RG_Tools
             PushButtonData buttondata2_1 =
                 new PushButtonData("Button2_1", "Review\nLinks", path, "RG_Tools.ReviewLinks");
             PushButton button2_1 = (PushButton)Panel2.AddItem(buttondata2_1);
-            //button2_1.LargeImage = Helper.GetIconSource(Resources.reviewlinks24);
-            //button2_1.Image = Helper.GetIconSource(Resources.reviewlinks16);
-            button2_1.ToolTip = "Checks if Revit Links are pinned and if " +
-                "they belong to a separated individual worksets " +
-                "(Workset name starts from ##RVT_). Fixes those issues.";
-
-            // Create Coordination Plan
-            PushButtonData buttondata2_5 =
-                new PushButtonData("Button2_5", "Coordination\nPlan", path, "RG_Tools.CoordPlan");
-
-            // Declare new pulldown button
-            PulldownButtonData pullDownButtonData2_1 = new PulldownButtonData("PullButton2_1", "Navis");
-            // Declare new pulldown button
-            PulldownButtonData pullDownButtonData2_2 = new PulldownButtonData("PullButton2_2", "Worksets");
-
-            // Declare stacked pulldown button
-            IList<RibbonItem> stackedItems2_1 = Panel2.AddStackedItems(buttondata2_5, pullDownButtonData2_1, pullDownButtonData2_2);
-
-            PushButton button2_5 = stackedItems2_1[0] as PushButton;
-            button2_5.LargeImage = Helper.GetIconSource(Icons.coordplan24);
-            button2_5.Image = Helper.GetIconSource(Icons.coordplan16);
-            button2_5.ToolTip = "Creates Coordination Plan for opened project";
-
-            PulldownButton pullbutton2_1 = stackedItems2_1[1] as PulldownButton;
-            RibbonDesigner.StackSplitButton(tabName, Panel2, pullbutton2_1);
-            PulldownButton pullbutton2_2 = stackedItems2_1[2] as PulldownButton;
-            RibbonDesigner.StackSplitButton(tabName, Panel2, pullbutton2_2);
-
-            
-
+            button2_1.LargeImage = Helper.GetIconSource(Icons.reviewlinks24);
+            button2_1.Image = Helper.GetIconSource(Icons.reviewlinks16);
+            button2_1.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "ReviewLinksTooltip");
 
             // Declare pushbutton Navis
             PushButtonData buttondata2_3 =
@@ -124,12 +97,23 @@ namespace RG_Tools
             //PushButton button2_4 = (PushButton)Panel2.AddItem(buttondata2_4);
             button2_4.LargeImage = Helper.GetIconSource(Icons.coordplan24);
             button2_4.Image = Helper.GetIconSource(Icons.coordplan16);
-            button2_4.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "CoordPlan");
+            button2_4.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "CoordPlanTooltip");
 
             button2_3.Size = AW.RibbonItemSize.Large;
             button2_3.ShowText = true;
             button2_4.Size = AW.RibbonItemSize.Large;
             button2_4.ShowText = true;
+
+
+
+
+            // Create Coordination Plan
+            PushButtonData buttondata2_5 =
+                new PushButtonData("Button2_5", "Select Elements By Category", path, "RG_Tools.SelectElementsByCategory");
+            PushButton button2_5 = (PushButton)Panel2.AddItem(buttondata2_5);
+            button2_5.LargeImage = Helper.GetIconSource(Icons.allelems24);
+            button2_5.Image = Helper.GetIconSource(Icons.allelems16);
+            button2_5.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "SelectElementsByCategoryTooltip");
 
             return Result.Succeeded;
         }

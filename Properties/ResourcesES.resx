@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CoordPlan" xml:space="preserve">
+  <data name="CoordPlanTooltip" xml:space="preserve">
     <value>Crea un plan de coordinación que revela el Punto Base del Proyecto y el Punto de Levantamiento</value>
   </data>
   <data name="InfoTooltip" xml:space="preserve">
@@ -127,5 +127,8 @@
     <value>Crea una nueva vista 3D para la exportación de Navisworks (Oculta todas las anotaciones, importaciones, etc.)
 Busca vistas 3D existentes, ofrece la opción de eliminar la vista existente y crear
 existía una nueva o una reserva.</value>
+  </data>
+  <data name="ReviewLinksTooltip" xml:space="preserve">
+    <value />
   </data>
 </root>
