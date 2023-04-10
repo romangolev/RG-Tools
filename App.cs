@@ -70,6 +70,15 @@ namespace RG_Tools
             button2_1.Image = Helper.GetIconSource(Icons.reviewlinks16);
             button2_1.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "ReviewLinksTooltip");
 
+            // Create pushbutton Review Links
+            PushButtonData buttondata2_2 =
+                new PushButtonData("Button2_2", "Worksets\n3D", path, "RG_Tools.Worksets3D");
+            PushButton button2_2 = (PushButton)Panel2.AddItem(buttondata2_2);
+            button2_2.LargeImage = Helper.GetIconSource(Icons.workset3d24);
+            button2_2.Image = Helper.GetIconSource(Icons.workset3d16);
+            button2_2.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "ReviewLinksTooltip");
+
+
             // Declare pushbutton Navis
             PushButtonData buttondata2_3 =
                 new PushButtonData("Button2_3", "Navis View", path, "RG_Tools.NavisView");
@@ -107,13 +116,37 @@ namespace RG_Tools
 
 
 
-            // Create Coordination Plan
+            // Create Select Elements Button
             PushButtonData buttondata2_5 =
-                new PushButtonData("Button2_5", "Select Elements By Category", path, "RG_Tools.SelectElementsByCategory");
-            PushButton button2_5 = (PushButton)Panel2.AddItem(buttondata2_5);
+                new PushButtonData("Button2_5", "Select All ..", path, "RG_Tools.SelectElementsByCategory");
+            // Create Select Elements Button
+            PushButtonData buttondata2_6 =
+                new PushButtonData("Button2_6", "Link More ..", path, "RG_Tools.LinkMore");
+            // Create Select Elements Button
+            PushButtonData buttondata2_7 =
+                new PushButtonData("Button2_7", "Copy Values", path, "RG_Tools.CopyValues");
+
+            IList<RibbonItem> stackedGroup2_1 = Panel2.AddStackedItems(buttondata2_5, buttondata2_6, buttondata2_7);
+
+            PushButton button2_5 = stackedGroup2_1[0] as PushButton;
             button2_5.LargeImage = Helper.GetIconSource(Icons.allelems24);
             button2_5.Image = Helper.GetIconSource(Icons.allelems16);
             button2_5.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "SelectElementsByCategoryTooltip");
+
+            // Create Select Elements Button
+            PushButtonData buttondata2_8 =
+                new PushButtonData("Button2_8", "Many Join", path, "RG_Tools.ManyJoin");
+            // Create Select Elements Button
+            PushButtonData buttondata2_9 =
+                new PushButtonData("Button2_9", "Links 3D", path, "RG_Tools.Links3D");
+            // Create Select Elements Button
+            PushButtonData buttondata2_10 =
+                new PushButtonData("Button2_10", "Copy Parameters", path, "RG_Tools.CopyParameters");
+
+            IList<RibbonItem> stackedGroup2_2 = Panel2.AddStackedItems(buttondata2_8, buttondata2_9, buttondata2_10);
+
+
+
 
             return Result.Succeeded;
         }
