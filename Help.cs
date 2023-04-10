@@ -39,7 +39,8 @@ namespace RG_Tools
                 + "Revit Version Build is: " + application.VersionBuild + "\n"
                 + "Active document: " + doc.Title + "\n"
                 + "Active view name: " + doc.ActiveView.Name + "\n"
-                + "Revit Language: " + application.Language
+                + "Revit Language: " + application.Language + "\n"
+                + "Username: " + application.Username
             };
             help.Show();
             return Result.Succeeded;

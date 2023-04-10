@@ -131,4 +131,10 @@
   <data name="ReviewLinksTooltip" xml:space="preserve">
     <value />
   </data>
+  <data name="SelectElementsByCategoryTooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Worksets3DTooltip" xml:space="preserve">
+    <value />
+  </data>
 </root>

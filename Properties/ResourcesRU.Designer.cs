@@ -97,5 +97,23 @@ namespace RG_Tools.Properties {
                 return ResourceManager.GetString("ReviewLinksTooltip", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string SelectElementsByCategoryTooltip {
+            get {
+                return ResourceManager.GetString("SelectElementsByCategoryTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string Worksets3DTooltip {
+            get {
+                return ResourceManager.GetString("Worksets3DTooltip", resourceCulture);
+            }
+        }
     }
 }
