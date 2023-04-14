@@ -70,7 +70,7 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provides help and information about add-in.
+        ///   Looks up a localized string similar to Provides help and information about Add-in.
         /// </summary>
         internal static string InfoTooltip {
             get {
@@ -79,9 +79,18 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creates new 3D View for Navisworks export (Hides all annotations, imports, etc.) 
-        ///Searches for existing 3D Views, gives an option to delete existing view and create
-        ///new one or preserve existed..
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string LinkMoreTooltip {
+            get {
+                return ResourceManager.GetString("LinkMoreTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creates new 3D View for Navisworks export (Hides all annotations, imports, etc.)  Searches for existing 3D Views, gives an option to open existing view and create new one.
+        ///
+        ///Hold SHIFT to create view with Revit links turned-on..
         /// </summary>
         internal static string NavisViewTooltip {
             get {

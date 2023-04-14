@@ -123,10 +123,13 @@
   <data name="InfoTooltip" xml:space="preserve">
     <value>Открывает справку и информацию о плагине</value>
   </data>
+  <data name="LinkMoreTooltip" xml:space="preserve">
+    <value />
+  </data>
   <data name="NavisViewTooltip" xml:space="preserve">
-    <value>Создаёт новый 3D вид Navisworks (Cкрывает аннотации, импорт DWG и т.д) 
-Производит поиск существующих 3D видов и в случае наличия существуюего вида 
-даёт возможность удалить и создать новый или оставить текущий.</value>
+    <value>Создаёт новый 3D вид Navisworks (Cкрывает аннотации, импорт DWG и т.д) Производит поиск существующих 3D видов и в случае наличия существуюего вида идаёт возможность удалить и создать новый или оставить текущий.
+
+При запуске с зажатой кнопкой SHIFT оставляет видимость связанных Revit файлов</value>
   </data>
   <data name="ReviewLinksTooltip" xml:space="preserve">
     <value />

@@ -64,7 +64,7 @@ namespace RG_Tools
                     "What would you like to do with existing Coordination Plan?";
                 // Add commmandLink options to task dialog
                 mainDialog.AddCommandLink(TaskDialogCommandLinkId.CommandLink1,
-                                          "Keep existed");
+                                          "Keep existed and open it");
 
                 mainDialog.AddCommandLink(TaskDialogCommandLinkId.CommandLink2,
                                           taskDescription);

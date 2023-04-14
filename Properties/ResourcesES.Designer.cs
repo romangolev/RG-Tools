@@ -79,9 +79,20 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string LinkMoreTooltip {
+            get {
+                return ResourceManager.GetString("LinkMoreTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Crea una nueva vista 3D para la exportación de Navisworks (Oculta todas las anotaciones, importaciones, etc.)
-        ///Busca vistas 3D existentes, ofrece la opción de eliminar la vista existente y crear
-        ///existía una nueva o una reserva..
+        /// Busca vistas 3D existentes, ofrece la opción de eliminar la vista existente y crear
+        ///existía una nueva o una reserva.
+        ///
+        ///Mantenga presionada la tecla SHIFT para crear una vista con los enlaces de Revit activados..
         /// </summary>
         internal static string NavisViewTooltip {
             get {

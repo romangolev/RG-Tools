@@ -45,23 +45,22 @@ namespace RG_Tools
             }
             else if (nw_ex.Any())
             {
-                string taskName = "Multiple existed Navis view detected";
+                string taskName = "Multiple existed Navis view detected" + nw_ex.Count();
                 string taskDescription = "Delete all existed Navis views and create new";
                 if (nw_ex.Count() == 1)
                 {
                     taskName = "Existed Navis view detected";
-                    taskDescription = "Delete existed Navis view and create new";
+                    taskDescription = "Delete existed Navis view and create new one";
                 }
 
                 TaskDialog mainDialog = new TaskDialog(taskName);
                 mainDialog.MainInstruction = "Navis View Detected!";
                 mainDialog.MainContent =
-                    "What would you like to do with existing 'Navis' view?"+
-                    SHIFT;
+                    "What would you like to do with existing 'Navis' view?";
 
                 // Add commmandLink options to task dialog
                 mainDialog.AddCommandLink(TaskDialogCommandLinkId.CommandLink1,
-                                          "Keep existed");
+                                          "Keep existed and open it");
 
                 mainDialog.AddCommandLink(TaskDialogCommandLinkId.CommandLink2,
                                           taskDescription);

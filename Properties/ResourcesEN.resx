@@ -121,12 +121,15 @@
     <value>Creates coordination plan that unveils Project Base point and Survey Point </value>
   </data>
   <data name="InfoTooltip" xml:space="preserve">
-    <value>Provides help and information about add-in</value>
+    <value>Provides help and information about Add-in</value>
+  </data>
+  <data name="LinkMoreTooltip" xml:space="preserve">
+    <value />
   </data>
   <data name="NavisViewTooltip" xml:space="preserve">
-    <value>Creates new 3D View for Navisworks export (Hides all annotations, imports, etc.) 
-Searches for existing 3D Views, gives an option to delete existing view and create
-new one or preserve existed.</value>
+    <value>Creates new 3D View for Navisworks export (Hides all annotations, imports, etc.)  Searches for existing 3D Views, gives an option to open existing view and create new one.
+
+Hold SHIFT to create view with Revit links turned-on.</value>
   </data>
   <data name="ReviewLinksTooltip" xml:space="preserve">
     <value>Checks if Revit Links are pinned and if they belong to a separated individual worksets which names start from ##RVT_). Fixes those issues if found any</value>

@@ -243,6 +243,26 @@ namespace RG_Tools.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap viewlink16 {
+            get {
+                object obj = ResourceManager.GetObject("viewlink16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap viewlink24 {
+            get {
+                object obj = ResourceManager.GetObject("viewlink24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap workset3d16 {
             get {
                 object obj = ResourceManager.GetObject("workset3d16", resourceCulture);

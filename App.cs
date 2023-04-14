@@ -124,13 +124,19 @@ namespace RG_Tools
             IList<RibbonItem> stackedGroup2_1 = Panel2.AddStackedItems(buttondata2_5, buttondata2_6, buttondata2_7);
 
             PushButton button2_5 = stackedGroup2_1[0] as PushButton;
-            button2_5.LargeImage = Helper.GetIconSource(Icons.allelems24);
-            button2_5.Image = Helper.GetIconSource(Icons.allelems16);
+            button2_5.LargeImage = Helper.GetIconSource(Icons.viewlink24);
+            button2_5.Image = Helper.GetIconSource(Icons.viewlink16);
             button2_5.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "SelectElementsByCategoryTooltip");
+            PushButton button2_6 = stackedGroup2_1[1] as PushButton;
+            button2_6.LargeImage = Helper.GetIconSource(Icons.limany24);
+            button2_6.Image = Helper.GetIconSource(Icons.limany16);
+            button2_6.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "LinkMoreTooltip");
             PushButton button2_7 = stackedGroup2_1[2] as PushButton;
             button2_7.LargeImage = Helper.GetIconSource(Icons.reviewlinks24);
             button2_7.Image = Helper.GetIconSource(Icons.reviewlinks16);
             button2_7.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "ReviewLinksTooltip");
+            
+            
             // Declare
             PushButtonData buttondata2_8 =
                 new PushButtonData("Button2_8", "Many Join", path, "RG_Tools.ManyJoin");
@@ -141,12 +147,12 @@ namespace RG_Tools
             PushButtonData buttondata2_10 = 
                 new PushButtonData("Button2_10", "Review Links", path, "RG_Tools.ReviewLinks");
 
-            IList<RibbonItem> stackedGroup2_2 = Panel2.AddStackedItems(buttondata2_8, buttondata2_9, buttondata2_10);
+            IList<RibbonItem> stackedGroup2_2 = Panel3.AddStackedItems(buttondata2_8, buttondata2_9, buttondata2_10);
 
             // Declare
             PushButtonData buttondata2_11 =
                 new PushButtonData("Button2_11", "Copy Values", path, "RG_Tools.CopyValues");
-            PushButton button2_11 = (PushButton)Panel2.AddItem(buttondata2_11);
+            PushButton button2_11 = (PushButton)Panel3.AddItem(buttondata2_11);
             button2_11.LargeImage = Helper.GetIconSource(Icons.reviewlinks24);
             button2_11.Image = Helper.GetIconSource(Icons.reviewlinks16);
             button2_11.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "CopyValuesTooltip");

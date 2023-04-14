@@ -79,9 +79,18 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Создаёт новый 3D вид Navisworks (Cкрывает аннотации, импорт DWG и т.д) 
-        ///Производит поиск существующих 3D видов и в случае наличия существуюего вида 
-        ///даёт возможность удалить и создать новый или оставить текущий..
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string LinkMoreTooltip {
+            get {
+                return ResourceManager.GetString("LinkMoreTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создаёт новый 3D вид Navisworks (Cкрывает аннотации, импорт DWG и т.д) Производит поиск существующих 3D видов и в случае наличия существуюего вида идаёт возможность удалить и создать новый или оставить текущий.
+        ///
+        ///При запуске с зажатой кнопкой SHIFT оставляет видимость связанных Revit файлов.
         /// </summary>
         internal static string NavisViewTooltip {
             get {
