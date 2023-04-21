@@ -299,6 +299,30 @@
   <ItemGroup>
     <None Include="Resources\info16.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cp16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cp24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\allelems161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\allelems241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\join161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\join241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delpar24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delpar16.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if exist "$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)" xcopy  /Y /i "$(TargetDir)$(TargetName).addin" "$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)"

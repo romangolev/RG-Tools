@@ -120,10 +120,19 @@
   <data name="CoordPlanTooltip" xml:space="preserve">
     <value> Создаёт координационный план, на котором включена видимость для "Project Base point" и "Survey Point"</value>
   </data>
+  <data name="CopyValuesTooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DeleteSharedTooltip" xml:space="preserve">
+    <value />
+  </data>
   <data name="InfoTooltip" xml:space="preserve">
     <value>Открывает справку и информацию о плагине</value>
   </data>
   <data name="LinkMoreTooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ManyJoinTooltip" xml:space="preserve">
     <value />
   </data>
   <data name="NavisViewTooltip" xml:space="preserve">

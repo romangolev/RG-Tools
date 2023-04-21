@@ -120,10 +120,19 @@
   <data name="CoordPlanTooltip" xml:space="preserve">
     <value>Creates coordination plan that unveils Project Base point and Survey Point </value>
   </data>
+  <data name="CopyValuesTooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DeleteSharedTooltip" xml:space="preserve">
+    <value />
+  </data>
   <data name="InfoTooltip" xml:space="preserve">
     <value>Provides help and information about Add-in</value>
   </data>
   <data name="LinkMoreTooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ManyJoinTooltip" xml:space="preserve">
     <value />
   </data>
   <data name="NavisViewTooltip" xml:space="preserve">

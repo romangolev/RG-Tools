@@ -120,10 +120,19 @@
   <data name="CoordPlanTooltip" xml:space="preserve">
     <value>Crea un plan de coordinación que revela el Punto Base del Proyecto y el Punto de Levantamiento</value>
   </data>
+  <data name="CopyValuesTooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DeleteSharedTooltip" xml:space="preserve">
+    <value />
+  </data>
   <data name="InfoTooltip" xml:space="preserve">
     <value>Proporciona ayuda y información sobre el complemento</value>
   </data>
   <data name="LinkMoreTooltip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ManyJoinTooltip" xml:space="preserve">
     <value />
   </data>
   <data name="NavisViewTooltip" xml:space="preserve">

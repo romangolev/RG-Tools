@@ -28,9 +28,11 @@ namespace RG_Tools
             {
                 Transaction transaction1 = new Transaction(doc);
                 transaction1.Start("Fix Pinned Links");
-                TaskDialog fixunpinned = new TaskDialog("Instance(s) Not Pinned");
-                fixunpinned.MainInstruction = "Instance(s) Not Pinned";
-                fixunpinned.MainContent = ConcatList(unp);
+                TaskDialog fixunpinned = new TaskDialog("Instance(s) Not Pinned")
+                {
+                    MainInstruction = "Instance(s) Not Pinned",
+                    MainContent = ConcatList(unp)
+                };
                 fixunpinned.AddCommandLink(TaskDialogCommandLinkId.CommandLink1, "Pin link(s)");
                 fixunpinned.AddCommandLink(TaskDialogCommandLinkId.CommandLink2, "Ignore warning");
                 fixunpinned.CommonButtons = TaskDialogCommonButtons.Close;
@@ -74,9 +76,11 @@ namespace RG_Tools
                 {
                     Transaction transaction2 = new Transaction(doc);
                     transaction2.Start("Fix Worksets");
-                    TaskDialog fixworksets = new TaskDialog("Instance(s) Not Pinned");
-                    fixworksets.MainInstruction = "Links are not in a separated worksets";
-                    fixworksets.MainContent = ConcatList(unw);
+                    TaskDialog fixworksets = new TaskDialog("Instance(s) Not Pinned")
+                    {
+                        MainInstruction = "Links are not in a separated worksets",
+                        MainContent = ConcatList(unw)
+                    };
                     fixworksets.AddCommandLink(TaskDialogCommandLinkId.CommandLink1, "Create separate worksets for links");
                     fixworksets.AddCommandLink(TaskDialogCommandLinkId.CommandLink2, "Ignore warning");
                     fixworksets.CommonButtons = TaskDialogCommonButtons.Close;
@@ -84,7 +88,7 @@ namespace RG_Tools
                     TaskDialogResult t2Result = fixworksets.Show();
                     if (TaskDialogResult.CommandLink1 == t2Result)
                     {
-                        foreach (Element link in unw)
+                        foreach (Element link in unw.Cast<Element>())
                         {
                             //Get LinkType
                             RevitLinkType linktype = (RevitLinkType)doc.GetElement(link.GetTypeId());

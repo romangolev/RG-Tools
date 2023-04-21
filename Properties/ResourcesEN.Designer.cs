@@ -70,6 +70,24 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string CopyValuesTooltip {
+            get {
+                return ResourceManager.GetString("CopyValuesTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string DeleteSharedTooltip {
+            get {
+                return ResourceManager.GetString("DeleteSharedTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Provides help and information about Add-in.
         /// </summary>
         internal static string InfoTooltip {
@@ -84,6 +102,15 @@ namespace RG_Tools.Properties {
         internal static string LinkMoreTooltip {
             get {
                 return ResourceManager.GetString("LinkMoreTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string ManyJoinTooltip {
+            get {
+                return ResourceManager.GetString("ManyJoinTooltip", resourceCulture);
             }
         }
         

@@ -63,22 +63,22 @@ namespace RG_Tools
             ///Panel 2 Coordination
 
 
-
-            // Declare and add pushbutton Navis View
-            PushButtonData buttondata2_3 =
-                new PushButtonData("Button2_3", "Navis\nView", path, "RG_Tools.NavisView");
-            PushButton button2_3 = (PushButton)Panel2.AddItem(buttondata2_3);
-            button2_3.LargeImage = Helper.GetIconSource(Icons.navis24);
-            button2_3.Image = Helper.GetIconSource(Icons.navis16);
-            button2_3.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "NavisViewTooltip");
-
             // Declare and add pushbutton Coord Plan
-            PushButtonData buttondata2_4 =
+            PushButtonData buttondata2_3 =
                 new PushButtonData("Button2_4", "Coord\nPlan", path, "RG_Tools.CoordPlan");
+            // Declare and add pushbutton Navis View
+
+            PushButton button2_3 = (PushButton)Panel2.AddItem(buttondata2_3);
+            button2_3.LargeImage = Helper.GetIconSource(Icons.coordplan24);
+            button2_3.Image = Helper.GetIconSource(Icons.coordplan16);
+            button2_3.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "CoordPlanTooltip");
+
+            PushButtonData buttondata2_4 =
+                new PushButtonData("Button2_3", "Navis\nView", path, "RG_Tools.NavisView");
             PushButton button2_4 = (PushButton)Panel2.AddItem(buttondata2_4);
-            button2_4.LargeImage = Helper.GetIconSource(Icons.coordplan24);
-            button2_4.Image = Helper.GetIconSource(Icons.coordplan16);
-            button2_4.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "CoordPlanTooltip");
+            button2_4.LargeImage = Helper.GetIconSource(Icons.navis24);
+            button2_4.Image = Helper.GetIconSource(Icons.navis16);
+            button2_4.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "NavisViewTooltip");
 
             /*
             // Create StackedItem
@@ -116,7 +116,7 @@ namespace RG_Tools
                 new PushButtonData("Button2_5", "Links 3D", path, "RG_Tools.Links3D");
             // Declare
             PushButtonData buttondata2_6 =
-                new PushButtonData("Button2_6", "Link More ..", path, "RG_Tools.LinkMore");
+                new PushButtonData("Button2_6", "Link more ..", path, "RG_Tools.LinkMore");
             // Declare
             PushButtonData buttondata2_7 =
                 new PushButtonData("Button2_7", "Review Links", path, "RG_Tools.ReviewLinks");
@@ -139,22 +139,33 @@ namespace RG_Tools
             
             // Declare
             PushButtonData buttondata2_8 =
-                new PushButtonData("Button2_8", "Many Join", path, "RG_Tools.ManyJoin");
+                new PushButtonData("Button2_8", "Join Many Elements", path, "RG_Tools.ManyJoin");
             // Declare
             PushButtonData buttondata2_9 =
-                new PushButtonData("Button2_9", "Select All ..", path, "RG_Tools.SelectElementsByCategory");
+                new PushButtonData("Button2_9", "All Elements of Category", path, "RG_Tools.SelectElementsByCategory");
             // Declare
             PushButtonData buttondata2_10 = 
-                new PushButtonData("Button2_10", "Review Links", path, "RG_Tools.ReviewLinks");
+                new PushButtonData("Button2_10", "Delete Shared Parameter", path, "RG_Tools.DeleteShared");
 
             IList<RibbonItem> stackedGroup2_2 = Panel3.AddStackedItems(buttondata2_8, buttondata2_9, buttondata2_10);
-
+            PushButton button2_8 = stackedGroup2_2[0] as PushButton;
+            button2_8.LargeImage = Helper.GetIconSource(Icons.join24);
+            button2_8.Image = Helper.GetIconSource(Icons.join16);
+            button2_8.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "ManyJoinTooltip");
+            PushButton button2_9 = stackedGroup2_2[1] as PushButton;
+            button2_9.LargeImage = Helper.GetIconSource(Icons.allelems24);
+            button2_9.Image = Helper.GetIconSource(Icons.allelems16);
+            button2_9.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "SelectElementsByCategoryTooltip");
+            PushButton button2_10 = stackedGroup2_2[2] as PushButton;
+            button2_10.LargeImage = Helper.GetIconSource(Icons.delpar24);
+            button2_10.Image = Helper.GetIconSource(Icons.delpar16);
+            button2_10.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "DeleteSharedTooltip");
             // Declare
             PushButtonData buttondata2_11 =
                 new PushButtonData("Button2_11", "Copy Values", path, "RG_Tools.CopyValues");
             PushButton button2_11 = (PushButton)Panel3.AddItem(buttondata2_11);
-            button2_11.LargeImage = Helper.GetIconSource(Icons.reviewlinks24);
-            button2_11.Image = Helper.GetIconSource(Icons.reviewlinks16);
+            button2_11.LargeImage = Helper.GetIconSource(Icons.cp24);
+            button2_11.Image = Helper.GetIconSource(Icons.cp16);
             button2_11.ToolTip = RibbonDesigner.GetLocalizedResource(lang, "CopyValuesTooltip");
 
             return Result.Succeeded;
