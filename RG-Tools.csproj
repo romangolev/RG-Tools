@@ -15,6 +15,8 @@
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
     <LangVersion>8.0</LangVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'R2020|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,6 +64,11 @@
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Tasks.v4.0" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="netstandard" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -163,9 +170,14 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="CoordPlan.cs" />
+    <Compile Include="CopyValues.cs" />
+    <Compile Include="DeleteShared.cs" />
     <Compile Include="Help.cs" />
+    <Compile Include="Helpers\FilterCategory.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="LinkMore.cs" />
+    <Compile Include="Links3D.cs" />
+    <Compile Include="ManyJoin.cs" />
     <Compile Include="NavisView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Icons.Designer.cs">
@@ -195,6 +207,13 @@
     </Compile>
     <Compile Include="Helpers\RibbonDesigner.cs" />
     <Compile Include="ReviewLinks.cs" />
+    <Compile Include="Worksets3D.cs" />
+    <Compile Include="WPF\CopyValuesWPF.xaml.cs">
+      <DependentUpon>CopyValuesWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\DeleteSharedWPF.xaml.cs">
+      <DependentUpon>DeleteSharedWPF.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WPF\SEBC.xaml.cs">
       <DependentUpon>SEBC.xaml</DependentUpon>
     </Compile>
@@ -243,6 +262,14 @@
     <None Include="Resources\reviewlinks16.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="WPF\CopyValuesWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\DeleteSharedWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WPF\SEBC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -323,6 +350,7 @@
   <ItemGroup>
     <None Include="Resources\delpar16.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if exist "$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)" xcopy  /Y /i "$(TargetDir)$(TargetName).addin" "$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)"

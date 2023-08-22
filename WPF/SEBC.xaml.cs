@@ -89,7 +89,7 @@ namespace RG_Tools
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message,"Error");
+                    MessageBox.Show(ex.Message,"Error");
                 }
 
 

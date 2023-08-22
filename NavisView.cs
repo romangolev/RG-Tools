@@ -221,7 +221,10 @@ namespace RG_Tools
                 {
                     view3D.HideElements(Helper.Collect_Links(doc));
                 }
-                catch {; }
+                catch 
+                {
+                    ;
+                }
             }
 
 
