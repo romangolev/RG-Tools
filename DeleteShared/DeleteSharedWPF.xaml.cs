@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RG_Tools.DeleteShared;
 
-namespace RG_Tools.WPF
+namespace RG_Tools
 {
     /// <summary>
     /// Interaction logic for DeleteSharedWPF.xaml
@@ -22,6 +23,8 @@ namespace RG_Tools.WPF
     {
         public DeleteSharedWPF()
         {
+            MessageBox.Show("loaded?");
+            InitializeComponent();
         }
     }
 }

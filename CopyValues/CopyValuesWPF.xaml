@@ -1,0 +1,38 @@
+﻿<Window x:Class="RG_Tools.CopyValuesWPF"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RG_Tools" 
+             xmlns:viewmodel="clr-namespace:RG_Tools.CopyValues"
+             mc:Ignorable="d" 
+             Title="Copy Values" Width="500" ResizeMode="NoResize" Height="150"
+             WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <viewmodel:BaseViewModel x:Key="vm"></viewmodel:BaseViewModel>
+    </Window.Resources>
+    
+    
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <!-- Or Auto -->
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0"  DataContext="{Binding Source={StaticResource vm}}">
+            <TextBlock Text="Parameter's values to copy from:" Margin="5,5" />
+            <ComboBox Margin="5,5" 
+                      ItemsSource="{Binding Path=Params}"
+                      SelectedItem="{Binding Path=SParam}"
+                      DisplayMemberPath="Name"/>
+            <Button Content="Rewrite ---->" Width="165" Margin="7,10,7,7"/>
+            <Button Height="25" Width="180" Margin="3" Content="{Binding Test}"/>
+
+        </StackPanel>
+        <StackPanel Grid.Column="1" >
+            <TextBlock Text="Parameter to write:" Margin="5,5" />
+            <ComboBox  Margin="5,5" />
+        </StackPanel>
+    </Grid>
+</Window>

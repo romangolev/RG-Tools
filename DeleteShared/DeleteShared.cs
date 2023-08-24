@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Application = Autodesk.Revit.ApplicationServices.Application;
-using RG_Tools.WPF;
 
-namespace RG_Tools
+
+namespace RG_Tools.DeleteShared
 {
     [TransactionAttribute(TransactionMode.Manual)]
     [RegenerationAttribute(RegenerationOption.Manual)]

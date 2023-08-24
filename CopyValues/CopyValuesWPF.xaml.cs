@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,16 +13,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Autodesk.Revit.Attributes;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
+using RG_Tools.CopyValues;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Application = Autodesk.Revit.ApplicationServices.Application;
 
-namespace RG_Tools.WPF
+namespace RG_Tools
 {
     /// <summary>
-    /// Interaction logic for CopyValuesWPF.xaml
+    /// Interaction logic for SEBC.xaml
     /// </summary>
-    public partial class CopyValuesWPF : UserControl
+    public partial class CopyValuesWPF : System.Windows.Window
     {
         public CopyValuesWPF()
         {
+            
+            InitializeComponent();
+
         }
     }
 }
