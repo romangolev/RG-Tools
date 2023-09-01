@@ -244,6 +244,7 @@ namespace RG_Tools
                     {
                         if (param.Id.ToString() == "-1008210" && param.AsElementId() != ElementId.InvalidElementId)
                         {
+                            //Set template to none
                             transaction.Start("Edit Settings for View Family Type");
                             param.Set(ElementId.InvalidElementId);
                             transaction.Commit();
@@ -258,6 +259,14 @@ namespace RG_Tools
                         transaction.Start("Create ViewFamily Type");
                         ViewFamilyType old_v = (ViewFamilyType)doc.GetElement(Helper.get3DviewType(doc));
                         ViewFamilyType new_v = old_v.Duplicate(viewName) as ViewFamilyType;
+                        //Set template to none
+                        foreach (Parameter param in new_v.GetOrderedParameters())
+                        {
+                            if (param.Id.ToString() == "-1008210" && param.AsElementId() != ElementId.InvalidElementId)
+                            {
+                                param.Set(ElementId.InvalidElementId);
+                            }
+                        }
                         transaction.Commit();
                         return new_v;
                     }
@@ -285,7 +294,22 @@ namespace RG_Tools
             return false;
         }
 
-
+        public static T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
+                if (child != null && child is T)
+                    return (T)child;
+                else
+                {
+                    T childOfChild = FindVisualChild<T>(child);
+                    if (childOfChild != null)
+                        return childOfChild;
+                }
+            }
+            return null;
+        }
 
     }
 }

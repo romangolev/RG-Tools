@@ -1,0 +1,52 @@
+﻿<Window x:Class="RG_Tools.SEBC"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:RG_Tools"
+        mc:Ignorable="d" 
+        Title="Select All Elements of Category" 
+        Width="402" 
+        Height="499" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,271,0">
+        <Grid Margin="0,0,-190,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="295*"/>
+                <ColumnDefinition Width="26*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ListBox Grid.Row="0" 
+                     x:Name="listBox" 
+                     ItemsSource="{Binding}" 
+                     Height="411"
+                     HorizontalAlignment="Left" 
+                     Margin="15,20,0,0"  
+                     VerticalAlignment="Top" 
+                     Width="295" Background="#0B000000" Grid.ColumnSpan="2">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <CheckBox Grid.Row="1"  Unchecked="CheckBox1_CheckedChanged" Checked="CheckBox1_CheckedChanged" x:Name="CheckBox1" Margin="15,0,0,0" VerticalAlignment="Center" Grid.ColumnSpan="2">
+                <TextBlock>Show Categories only for elements from view</TextBlock>
+            </CheckBox>
+        </Grid>
+        <Grid Margin="326,0,-265,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="1" x:Name="btn1" Click="Click" Height="80" Width="55" HorizontalAlignment="Center" >
+                <TextBlock TextAlignment="Center">Select<LineBreak/>Checked<LineBreak/>and<LineBreak/>Close</TextBlock>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

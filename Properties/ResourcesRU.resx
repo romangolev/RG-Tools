@@ -117,12 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CoordPlanTooltip" xml:space="preserve">
+    <value> Создаёт координационный план, на котором включена видимость для "Project Base point" и "Survey Point"</value>
+  </data>
+  <data name="CopyValuesTooltip" xml:space="preserve">
+    <value>Копирует значения параметра для выбранных элементов из одного свойства в другое</value>
+  </data>
+  <data name="DeleteSharedTooltip" xml:space="preserve">
+    <value>Удаляет выбранный общий параметр польностью из проекта</value>
+  </data>
   <data name="InfoTooltip" xml:space="preserve">
     <value>Открывает справку и информацию о плагине</value>
   </data>
+  <data name="LinkMoreTooltip" xml:space="preserve">
+    <value>Добавляет в проект несколько свзяей RVT, IFC, DWG</value>
+  </data>
+  <data name="Links3DTooltip" xml:space="preserve">
+    <value>Создаёт 3D виды на основе связанных файлов</value>
+  </data>
+  <data name="ManyJoinPrompt1" xml:space="preserve">
+    <value>Выбор объекта К КОТОРУМУ ПРИСОЕДЕНЯЮТ (СТЕНА, ПЕРЕКРЫТИЕ, ПОТОЛОК)</value>
+  </data>
+  <data name="ManyJoinPrompt2" xml:space="preserve">
+    <value>Выбор объекта КОТОРЫЙ ПРИСОЕДЕНЯЕТСЯ</value>
+  </data>
+  <data name="ManyJoinTooltip" xml:space="preserve">
+    <value>Присоединяет множественные элементы</value>
+  </data>
   <data name="NavisViewTooltip" xml:space="preserve">
-    <value>Создаёт новый 3D вид Navisworks (Cкрывает аннотации, импорт DWG и т.д) 
-Производит поиск существующих 3D видов и в случае наличия существуюего вида 
-даёт возможность удалить и создать новый или оставить текущий.</value>
+    <value>Создаёт новый 3D вид Navisworks (Cкрывает аннотации, импорт DWG и т.д) Производит поиск существующих 3D видов и в случае наличия существуюего вида идаёт возможность удалить и создать новый или оставить текущий.
+
+При запуске с зажатой кнопкой SHIFT оставляет видимость связанных Revit файлов</value>
+  </data>
+  <data name="ReviewLinksTooltip" xml:space="preserve">
+    <value>Проверяет закреплены ли связи и находится ли связь на отдельном рабочем наборе (начинающемся с ##Link_)
+Исправляет эти ошибки</value>
+  </data>
+  <data name="SelectElementsByCategoryTooltip" xml:space="preserve">
+    <value>Выбирает все элементы заданной категории в проекте</value>
+  </data>
+  <data name="Worksets3DTooltip" xml:space="preserve">
+    <value>Создаёт 3D виды на основе видимости рабочих наборов.</value>
   </data>
 </root>

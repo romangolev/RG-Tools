@@ -61,7 +61,34 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provides help and information about add-in.
+        ///   Looks up a localized string similar to Creates coordination plan that unveils Project Base point and Survey Point .
+        /// </summary>
+        internal static string CoordPlanTooltip {
+            get {
+                return ResourceManager.GetString("CoordPlanTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copies parameter value from one property to another for multiple selected elements. It&apos;s possible to preselect elements or pick them when prompted.
+        /// </summary>
+        internal static string CopyValuesTooltip {
+            get {
+                return ResourceManager.GetString("CopyValuesTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completely removes shared parameter from project. Allows to add another shared parameter with the same GUID but different properties after deletion.
+        /// </summary>
+        internal static string DeleteSharedTooltip {
+            get {
+                return ResourceManager.GetString("DeleteSharedTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provides help and information about Add-in.
         /// </summary>
         internal static string InfoTooltip {
             get {
@@ -70,13 +97,85 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creates new 3D View for Navisworks export (Hides all annotations, imports, etc.) 
-        ///Searches for existing 3D Views, gives an option to delete existing view and create
-        ///new one or preserve existed..
+        ///   Looks up a localized string similar to Creates many RVT, DWG or IFC links at once.
+        /// </summary>
+        internal static string LinkMoreTooltip {
+            get {
+                return ResourceManager.GetString("LinkMoreTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create 3D views based on worksets..
+        /// </summary>
+        internal static string Links3DTooltip {
+            get {
+                return ResourceManager.GetString("Links3DTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick the elements to join (group1).
+        /// </summary>
+        internal static string ManyJoinPrompt1 {
+            get {
+                return ResourceManager.GetString("ManyJoinPrompt1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick the elements to join (group2).
+        /// </summary>
+        internal static string ManyJoinPrompt2 {
+            get {
+                return ResourceManager.GetString("ManyJoinPrompt2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Joins multiple elements.
+        /// </summary>
+        internal static string ManyJoinTooltip {
+            get {
+                return ResourceManager.GetString("ManyJoinTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creates new 3D View for Navisworks export (Hides all annotations, imports, etc.)  Searches for existing 3D Views, gives an option to open existing view and create new one.
+        ///
+        ///Hold SHIFT to create view with Revit links turned-on..
         /// </summary>
         internal static string NavisViewTooltip {
             get {
                 return ResourceManager.GetString("NavisViewTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Checks if Revit Links are pinned and if they belong to a separated individual worksets which names start from ##RVT_). Fixes those issues if found any.
+        /// </summary>
+        internal static string ReviewLinksTooltip {
+            get {
+                return ResourceManager.GetString("ReviewLinksTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selects all the Elements of defined Category in the project.
+        /// </summary>
+        internal static string SelectElementsByCategoryTooltip {
+            get {
+                return ResourceManager.GetString("SelectElementsByCategoryTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create 3D views based on worksets..
+        /// </summary>
+        internal static string Worksets3DTooltip {
+            get {
+                return ResourceManager.GetString("Worksets3DTooltip", resourceCulture);
             }
         }
     }

@@ -61,6 +61,33 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  Создаёт координационный план, на котором включена видимость для &quot;Project Base point&quot; и &quot;Survey Point&quot;.
+        /// </summary>
+        internal static string CoordPlanTooltip {
+            get {
+                return ResourceManager.GetString("CoordPlanTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Копирует значения параметра для выбранных элементов из одного свойства в другое.
+        /// </summary>
+        internal static string CopyValuesTooltip {
+            get {
+                return ResourceManager.GetString("CopyValuesTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удаляет выбранный общий параметр польностью из проекта.
+        /// </summary>
+        internal static string DeleteSharedTooltip {
+            get {
+                return ResourceManager.GetString("DeleteSharedTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Открывает справку и информацию о плагине.
         /// </summary>
         internal static string InfoTooltip {
@@ -70,13 +97,86 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Создаёт новый 3D вид Navisworks (Cкрывает аннотации, импорт DWG и т.д) 
-        ///Производит поиск существующих 3D видов и в случае наличия существуюего вида 
-        ///даёт возможность удалить и создать новый или оставить текущий..
+        ///   Looks up a localized string similar to Добавляет в проект несколько свзяей RVT, IFC, DWG.
+        /// </summary>
+        internal static string LinkMoreTooltip {
+            get {
+                return ResourceManager.GetString("LinkMoreTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создаёт 3D виды на основе связанных файлов.
+        /// </summary>
+        internal static string Links3DTooltip {
+            get {
+                return ResourceManager.GetString("Links3DTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выбор объекта К КОТОРУМУ ПРИСОЕДЕНЯЮТ (СТЕНА, ПЕРЕКРЫТИЕ, ПОТОЛОК).
+        /// </summary>
+        internal static string ManyJoinPrompt1 {
+            get {
+                return ResourceManager.GetString("ManyJoinPrompt1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выбор объекта КОТОРЫЙ ПРИСОЕДЕНЯЕТСЯ.
+        /// </summary>
+        internal static string ManyJoinPrompt2 {
+            get {
+                return ResourceManager.GetString("ManyJoinPrompt2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Присоединяет множественные элементы.
+        /// </summary>
+        internal static string ManyJoinTooltip {
+            get {
+                return ResourceManager.GetString("ManyJoinTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создаёт новый 3D вид Navisworks (Cкрывает аннотации, импорт DWG и т.д) Производит поиск существующих 3D видов и в случае наличия существуюего вида идаёт возможность удалить и создать новый или оставить текущий.
+        ///
+        ///При запуске с зажатой кнопкой SHIFT оставляет видимость связанных Revit файлов.
         /// </summary>
         internal static string NavisViewTooltip {
             get {
                 return ResourceManager.GetString("NavisViewTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Проверяет закреплены ли связи и находится ли связь на отдельном рабочем наборе (начинающемся с ##Link_)
+        ///Исправляет эти ошибки.
+        /// </summary>
+        internal static string ReviewLinksTooltip {
+            get {
+                return ResourceManager.GetString("ReviewLinksTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выбирает все элементы заданной категории в проекте.
+        /// </summary>
+        internal static string SelectElementsByCategoryTooltip {
+            get {
+                return ResourceManager.GetString("SelectElementsByCategoryTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создаёт 3D виды на основе видимости рабочих наборов..
+        /// </summary>
+        internal static string Worksets3DTooltip {
+            get {
+                return ResourceManager.GetString("Worksets3DTooltip", resourceCulture);
             }
         }
     }

@@ -1,0 +1,45 @@
+﻿<Window x:Class="RG_Tools.DeleteSharedWPF"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:RG_Tools"
+        xmlns:viewmodel="clr-namespace:RG_Tools" 
+        Title="Delete Shared Parameter"     
+        Width="300" 
+        ResizeMode="NoResize" 
+        Height="500"
+        WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <local:viewmodelDeleteShared/>
+    </Window.DataContext>
+    <Grid>
+        <StackPanel Background="White">
+            <ListBox 
+                x:Name="listbox"
+                Margin="5" 
+                Height="395" 
+                ItemsSource="{Binding SharedParamsWrapped}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <ListBoxItem Height="20">
+                            <CheckBox VerticalContentAlignment="Center"
+                                      HorizontalAlignment="Center" 
+                                      Height="30" 
+                                      VerticalAlignment="Center">
+                                <CheckBox.Content>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </CheckBox.Content>
+                            </CheckBox>
+                        </ListBoxItem>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Height="45" 
+                    Width="180" 
+                    Margin="3" 
+                    Content="Delete Selected"
+                    Click="Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

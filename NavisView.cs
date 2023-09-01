@@ -9,6 +9,8 @@ using Autodesk.Revit.Attributes;
 using RG_Tools;
 using System.Runtime.Remoting.Messaging;
 using System.Windows.Input;
+using System.Windows;
+using Autodesk.Revit.DB.Architecture;
 
 namespace RG_Tools
 {
@@ -25,7 +27,7 @@ namespace RG_Tools
             // Get Document
             Document doc = uidoc.Document;
 
-            List<object> nw_ex = find_ex(doc);
+            List<object> nw_ex = Find_ex(doc);
             Transaction transaction = new Transaction(doc);
 
             FilteredElementCollector a = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType));
@@ -34,34 +36,40 @@ namespace RG_Tools
 
             bool SHIFT = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift);
 
+            
+
             if (nw_ex.Count == 0)
             {
+                //check if model editable
+                if (CheckReadOnly(doc)) { return Result.Cancelled; }
+                //proceed with creating new view
                 transaction.Start("Create Navis 3D View");
-                View3D view = createNavisView(doc, vf);
-                View3D adjview = adjustNavisView(doc, view, SHIFT);
+                View3D view = CreateNavisView(doc, vf);
+                View3D adjview = AdjustNavisView(doc, view, SHIFT);
                 transaction.Commit();
                 uidoc.ActiveView = adjview;
                 return Result.Succeeded;
             }
             else if (nw_ex.Any())
             {
-                string taskName = "Multiple existed Navis view detected";
+                string taskName = "Multiple existed Navis view detected" + nw_ex.Count();
                 string taskDescription = "Delete all existed Navis views and create new";
                 if (nw_ex.Count() == 1)
                 {
                     taskName = "Existed Navis view detected";
-                    taskDescription = "Delete existed Navis view and create new";
+                    taskDescription = "Delete existed Navis view and create new one";
                 }
 
-                TaskDialog mainDialog = new TaskDialog(taskName);
-                mainDialog.MainInstruction = "Navis View Detected!";
-                mainDialog.MainContent =
-                    "What would you like to do with existing 'Navis' view?"+
-                    SHIFT;
+                TaskDialog mainDialog = new TaskDialog(taskName)
+                {
+                    MainInstruction = "Navis View Detected!",
+                    MainContent =
+                    "What would you like to do with existing 'Navis' view?"
+                };
 
                 // Add commmandLink options to task dialog
                 mainDialog.AddCommandLink(TaskDialogCommandLinkId.CommandLink1,
-                                          "Keep existed");
+                                          "Keep existed and open it");
 
                 mainDialog.AddCommandLink(TaskDialogCommandLinkId.CommandLink2,
                                           taskDescription);
@@ -80,53 +88,47 @@ namespace RG_Tools
                 }
                 else if (TaskDialogResult.CommandLink2 == tResult)
                 {
-                    using (TransactionGroup transGroup = new TransactionGroup(doc))
+                    if (CheckReadOnly(doc)) { return Result.Cancelled; }
+                    using TransactionGroup transGroup = new TransactionGroup(doc);
+                    transGroup.Start("Delete all existed and create new Navis view");
+                    using (Transaction trans1 = new Transaction(doc))
                     {
-                        transGroup.Start("Delete all existed and create new Navis view");
-                        using (Transaction trans1 = new Transaction(doc))
+                        trans1.Start("Create dummy");
+                        View3D dummy3d = CreateDefault3D(doc);
+                        trans1.Commit();
+                        uidoc.ActiveView = dummy3d;
+
+                        using (Transaction trans2 = new Transaction(doc))
                         {
-                            trans1.Start("Create dummy");
-                            View3D dummy3d = createDefault3D(doc);
-                            trans1.Commit();
-                            uidoc.ActiveView = dummy3d;
-
-                            using (Transaction trans2 = new Transaction(doc))
+                            trans2.Start("Delete existed Navis view and create new");
+                            foreach (View vie in nw_ex.Cast<View>())
                             {
-                                trans2.Start("Delete existed Navis view and create new");
-                                foreach (View vie in nw_ex)
-                                {
-                                    doc.Delete(vie.Id);
-                                }
-                                View3D nwnew = createNavisView(doc, vf);
-                                View3D nwadj = adjustNavisView(doc, nwnew, SHIFT);
-                                trans2.Commit();
-                                uidoc.ActiveView = nwadj;
+                                doc.Delete(vie.Id);
                             }
-                            using (Transaction trans3 = new Transaction(doc))
-                            {
-                                trans3.Start("Delete dummy");
-                                doc.Delete(dummy3d.Id);
-                                trans3.Commit();
-
-                            }
+                            View3D nwnew = CreateNavisView(doc, vf);
+                            View3D nwadj = AdjustNavisView(doc, nwnew, SHIFT);
+                            trans2.Commit();
+                            uidoc.ActiveView = nwadj;
                         }
-                        transGroup.Assimilate();
+                        using Transaction trans3 = new Transaction(doc);
+                        trans3.Start("Delete dummy");
+                        doc.Delete(dummy3d.Id);
+                        trans3.Commit();
                     }
+                    transGroup.Assimilate();
                     return Result.Succeeded;
                 }
                 else if (TaskDialogResult.CommandLink3 == tResult)
                 {
+                    if (CheckReadOnly(doc)) { return Result.Cancelled; }
                     try
                     {
                         transaction.Start("Change Navis view settings");
                         View3D vv = (View3D)nw_ex[0];
                         Parameter par = vv.get_Parameter(BuiltInParameter.VIEW_TEMPLATE);
-                        if (par != null)
-                        {
-                            par.Set(ElementId.InvalidElementId);
-                        }
+                        par?.Set(ElementId.InvalidElementId);
 
-                        vv = adjustNavisView(doc, vv, SHIFT);
+                        vv = AdjustNavisView(doc, vv, SHIFT);
                         transaction.Commit();
                         uidoc.ActiveView = vv;
                     }
@@ -139,13 +141,13 @@ namespace RG_Tools
         }
 
         // Function for finding existed Navis View in a Document
-        public static List<object> find_ex(Document doc)
+        public static List<object> Find_ex(Document doc)
         {
 
             List<object> navis3D = new List<object>();
             FilteredElementCollector collector = new FilteredElementCollector(doc);
             IList<Element> elems = collector.OfCategory(BuiltInCategory.OST_Views).WhereElementIsNotElementType().ToElements();
-            foreach (View elem in elems)
+            foreach (View elem in elems.Cast<View>())
             {
                 if (elem.ViewType == ViewType.ThreeD && elem.IsTemplate == false)
                 {
@@ -159,7 +161,7 @@ namespace RG_Tools
         }
 
         // Creates Navis View
-        public static View3D createNavisView(Document doc, ViewFamilyType vf)
+        public static View3D CreateNavisView(Document doc, ViewFamilyType vf)
         {
             //View3D view3D = View3D.CreateIsometric(doc, Helper.get3DviewType(doc));
             View3D view3D = View3D.CreateIsometric(doc, vf.Id);
@@ -169,7 +171,7 @@ namespace RG_Tools
         }
 
         // Adjust Settings of Navis View
-        public static View3D adjustNavisView(Document doc, View3D view3D, bool SHIFT)
+        public static View3D AdjustNavisView(Document doc, View3D view3D, bool SHIFT)
         {
             //Hide all annotations, import, point clouds on view
             view3D.AreAnnotationCategoriesHidden = true;
@@ -219,7 +221,10 @@ namespace RG_Tools
                 {
                     view3D.HideElements(Helper.Collect_Links(doc));
                 }
-                catch {; }
+                catch 
+                {
+                    ;
+                }
             }
 
 
@@ -227,10 +232,24 @@ namespace RG_Tools
             return view3D;
         }
 
-        public static View3D createDefault3D(Document doc)
+        public static View3D CreateDefault3D(Document doc)
         {
             View3D view3D = View3D.CreateIsometric(doc, Helper.get3DviewType(doc));
             return view3D;
+        }
+
+        public static bool CheckReadOnly(Document doc)
+        {
+            if (doc.IsReadOnlyFile)
+            {
+                MessageBox.Show("The operattion cannot be completed, because the model is in 'Read Only' mode", "Naviw View - Cancelled");
+                return true;
+            }
+            else
+            {
+                return false;
+                //continue code execution
+            }
         }
 
     }

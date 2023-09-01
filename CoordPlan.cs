@@ -41,7 +41,7 @@ namespace RG_Tools
             // Get View type
             ViewFamilyType vf = get_ViewType(transaction, a);
             // Find existed views
-            List<object> cp = find_coord(doc);
+            List<object> cp = FindCoordinationView(doc);
             // Creating a view plan based on View Family Type and level in current document
             if (cp.Count == 0)
             {
@@ -58,13 +58,15 @@ namespace RG_Tools
             {
                 string taskName = "Existed Coordination Plan detected";
                 string taskDescription = "Delete existed Coordination Plan and create new";
-                TaskDialog mainDialog = new TaskDialog(taskName);
-                mainDialog.MainInstruction = "Coordination Plan Detected!";
-                mainDialog.MainContent =
-                    "What would you like to do with existing Coordination Plan?";
+                TaskDialog mainDialog = new TaskDialog(taskName)
+                {
+                    MainInstruction = "Coordination Plan Detected!",
+                    MainContent =
+                    "What would you like to do with existing Coordination Plan?"
+                };
                 // Add commmandLink options to task dialog
                 mainDialog.AddCommandLink(TaskDialogCommandLinkId.CommandLink1,
-                                          "Keep existed");
+                                          "Keep existed and open it");
 
                 mainDialog.AddCommandLink(TaskDialogCommandLinkId.CommandLink2,
                                           taskDescription);
@@ -76,38 +78,36 @@ namespace RG_Tools
                 }
                 else if (TaskDialogResult.CommandLink2 == tResult)
                 {
-                    using (TransactionGroup transGroup = new TransactionGroup(doc))
+                    using TransactionGroup transGroup = new TransactionGroup(doc);
+                    transGroup.Start("Delete all existed and create new Coordination plan");
+                    ViewPlan _dummy = null;
+                    using (Transaction trans0 = new Transaction(doc))
                     {
-                        transGroup.Start("Delete all existed and create new Coordination plan");
-                        ViewPlan _dummy = null;
-                        using (Transaction trans0 = new Transaction(doc))
-                        {
-                            trans0.Start("Creating Dummy");
-                            ViewPlan dummy = ViewPlan.Create(doc, vf.Id, lvl.Id);
-                            trans0.Commit();
-                            uidoc.ActiveView = dummy;
-                            _dummy = dummy;
-                        }
-
-                        using (Transaction trans1 = new Transaction(doc))
-                        {
-                            trans1.Start("Delete existed Coordination Plan and Create new");
-                            foreach (View c in cp)
-                            {
-                                doc.Delete(c.Id);
-                            }
-                            ViewPlan vp = createCoordPlan(doc, vf, lvl);
-                            trans1.Commit();
-                            uidoc.ActiveView = vp;
-                        }
-                        using (Transaction trans2 = new Transaction(doc))
-                        {
-                            trans2.Start("Delete dummy");
-                            doc.Delete(_dummy.Id);
-                            trans2.Commit();
-                        }
-                        transGroup.Assimilate();
+                        trans0.Start("Creating Dummy");
+                        ViewPlan dummy = ViewPlan.Create(doc, vf.Id, lvl.Id);
+                        trans0.Commit();
+                        uidoc.ActiveView = dummy;
+                        _dummy = dummy;
                     }
+
+                    using (Transaction trans1 = new Transaction(doc))
+                    {
+                        trans1.Start("Delete existed Coordination Plan and Create new");
+                        foreach (View c in cp.Cast<View>())
+                        {
+                            doc.Delete(c.Id);
+                        }
+                        ViewPlan vp = createCoordPlan(doc, vf, lvl);
+                        trans1.Commit();
+                        uidoc.ActiveView = vp;
+                    }
+                    using (Transaction trans2 = new Transaction(doc))
+                    {
+                        trans2.Start("Delete dummy");
+                        doc.Delete(_dummy.Id);
+                        trans2.Commit();
+                    }
+                    transGroup.Assimilate();
                 }
                 return Result.Succeeded;
             }
@@ -115,13 +115,13 @@ namespace RG_Tools
         }
 
         // Function that finds existed Navis View in a Document
-        public static List<object> find_coord(Document doc)
+        public static List<object> FindCoordinationView(Document doc)
         {
 
             List<object> coord_plan = new List<object>();
             FilteredElementCollector collector = new FilteredElementCollector(doc);
             IList<Element> elems = collector.OfCategory(BuiltInCategory.OST_Views).WhereElementIsNotElementType().ToElements();
-            foreach (View elem in elems)
+            foreach (View elem in elems.Cast<View>())
             {
                 if (elem.ViewType == ViewType.FloorPlan && elem.IsTemplate == false)
                 {

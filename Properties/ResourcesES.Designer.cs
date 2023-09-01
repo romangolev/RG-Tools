@@ -61,6 +61,33 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Crea un plan de coordinación que revela el Punto Base del Proyecto y el Punto de Levantamiento.
+        /// </summary>
+        internal static string CoordPlanTooltip {
+            get {
+                return ResourceManager.GetString("CoordPlanTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copia el valor del parámetro de una propiedad a otra para varios elementos seleccionados. Es posible preseleccionar elementos o seleccionarlos cuando se le solicite.
+        /// </summary>
+        internal static string CopyValuesTooltip {
+            get {
+                return ResourceManager.GetString("CopyValuesTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elimina completamente el parámetro compartido del proyecto. Permite agregar otro parámetro compartido con el mismo GUID pero diferentes propiedades después de la eliminación.
+        /// </summary>
+        internal static string DeleteSharedTooltip {
+            get {
+                return ResourceManager.GetString("DeleteSharedTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Proporciona ayuda y información sobre el complemento.
         /// </summary>
         internal static string InfoTooltip {
@@ -70,13 +97,87 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Crea múltiples vínculos RVT, DWG o IFC a la vez.
+        /// </summary>
+        internal static string LinkMoreTooltip {
+            get {
+                return ResourceManager.GetString("LinkMoreTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crea vistas 3D basadas en subproyectos..
+        /// </summary>
+        internal static string Links3DTooltip {
+            get {
+                return ResourceManager.GetString("Links3DTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elige los elementos a unir (grupo1).
+        /// </summary>
+        internal static string ManyJoinPrompt1 {
+            get {
+                return ResourceManager.GetString("ManyJoinPrompt1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elige los elementos a unir (grupo2).
+        /// </summary>
+        internal static string ManyJoinPrompt2 {
+            get {
+                return ResourceManager.GetString("ManyJoinPrompt2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Une múltiples elementos.
+        /// </summary>
+        internal static string ManyJoinTooltip {
+            get {
+                return ResourceManager.GetString("ManyJoinTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Crea una nueva vista 3D para la exportación de Navisworks (Oculta todas las anotaciones, importaciones, etc.)
-        ///Busca vistas 3D existentes, ofrece la opción de eliminar la vista existente y crear
-        ///existía una nueva o una reserva..
+        /// Busca vistas 3D existentes, ofrece la opción de eliminar la vista existente y crear
+        ///existía una nueva o una reserva.
+        ///
+        ///Mantenga presionada la tecla SHIFT para crear una vista con los enlaces de Revit activados..
         /// </summary>
         internal static string NavisViewTooltip {
             get {
                 return ResourceManager.GetString("NavisViewTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comprueba si los vínculos de Revit están anclados y si pertenecen a conjuntos de trabajo individuales separados cuyos nombres comienzan con ##RVT_). Soluciona esos problemas si encuentra alguno..
+        /// </summary>
+        internal static string ReviewLinksTooltip {
+            get {
+                return ResourceManager.GetString("ReviewLinksTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecciona todos los elementos de la categoría definida en el proyecto..
+        /// </summary>
+        internal static string SelectElementsByCategoryTooltip {
+            get {
+                return ResourceManager.GetString("SelectElementsByCategoryTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cree vistas 3D basadas en subproyectos..
+        /// </summary>
+        internal static string Worksets3DTooltip {
+            get {
+                return ResourceManager.GetString("Worksets3DTooltip", resourceCulture);
             }
         }
     }

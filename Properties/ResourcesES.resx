@@ -117,12 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CoordPlanTooltip" xml:space="preserve">
+    <value>Crea un plan de coordinación que revela el Punto Base del Proyecto y el Punto de Levantamiento</value>
+  </data>
+  <data name="CopyValuesTooltip" xml:space="preserve">
+    <value>Copia el valor del parámetro de una propiedad a otra para varios elementos seleccionados. Es posible preseleccionar elementos o seleccionarlos cuando se le solicite</value>
+  </data>
+  <data name="DeleteSharedTooltip" xml:space="preserve">
+    <value>Elimina completamente el parámetro compartido del proyecto. Permite agregar otro parámetro compartido con el mismo GUID pero diferentes propiedades después de la eliminación</value>
+  </data>
   <data name="InfoTooltip" xml:space="preserve">
     <value>Proporciona ayuda y información sobre el complemento</value>
   </data>
+  <data name="LinkMoreTooltip" xml:space="preserve">
+    <value>Crea múltiples vínculos RVT, DWG o IFC a la vez</value>
+  </data>
+  <data name="Links3DTooltip" xml:space="preserve">
+    <value>Crea vistas 3D basadas en subproyectos.</value>
+  </data>
+  <data name="ManyJoinPrompt1" xml:space="preserve">
+    <value>Elige los elementos a unir (grupo1)</value>
+  </data>
+  <data name="ManyJoinPrompt2" xml:space="preserve">
+    <value>Elige los elementos a unir (grupo2)</value>
+  </data>
+  <data name="ManyJoinTooltip" xml:space="preserve">
+    <value>Une múltiples elementos</value>
+  </data>
   <data name="NavisViewTooltip" xml:space="preserve">
     <value>Crea una nueva vista 3D para la exportación de Navisworks (Oculta todas las anotaciones, importaciones, etc.)
-Busca vistas 3D existentes, ofrece la opción de eliminar la vista existente y crear
-existía una nueva o una reserva.</value>
+ Busca vistas 3D existentes, ofrece la opción de eliminar la vista existente y crear
+existía una nueva o una reserva.
+
+Mantenga presionada la tecla SHIFT para crear una vista con los enlaces de Revit activados.</value>
+  </data>
+  <data name="ReviewLinksTooltip" xml:space="preserve">
+    <value>Comprueba si los vínculos de Revit están anclados y si pertenecen a conjuntos de trabajo individuales separados cuyos nombres comienzan con ##RVT_). Soluciona esos problemas si encuentra alguno.</value>
+  </data>
+  <data name="SelectElementsByCategoryTooltip" xml:space="preserve">
+    <value>Selecciona todos los elementos de la categoría definida en el proyecto.</value>
+  </data>
+  <data name="Worksets3DTooltip" xml:space="preserve">
+    <value>Cree vistas 3D basadas en subproyectos.</value>
   </data>
 </root>
