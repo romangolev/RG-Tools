@@ -4,7 +4,7 @@
 		<Name>RG Tools</Name>
 		<FullClassName>RG_Tools.App</FullClassName>
 		<Text>RG Tools</Text>
-		<Description>A set of tools to enchanse Revit productivity</Description>
+		<Description>A set of tools to enhanse Revit productivity</Description>
 		<Assembly>RG-Tools/RG-Tools.dll</Assembly>
 		<ClientId>C35BA1ED-3948-434B-9CE6-D3FBA82F3A01</ClientId>
 		<VendorId>Roman Golev</VendorId>

@@ -1,6 +1,7 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using Autodesk.Revit.UI.Selection;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,19 +11,21 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using Application = Autodesk.Revit.ApplicationServices.Application;
-
+using RG_Tools.Helpers;
+using static RG_Tools.Helpers.SelectionAndFiltering;
 
 namespace RG_Tools.CopyValues
 {
     [TransactionAttribute(TransactionMode.Manual)]
     [RegenerationAttribute(RegenerationOption.Manual)]
-    public class CopyValues : IExternalCommand
+    internal class CopyValues : IExternalCommand
     {
+        // ModelessForm instance
+        private CopyValuesWPF _mMyForm;
 
-        public Result Execute(ExternalCommandData commandData,
-            ref string message,
-            ElementSet elements)
+        public virtual Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             // Get UIDocument
             UIDocument uidoc = commandData.Application.ActiveUIDocument;
@@ -31,36 +34,86 @@ namespace RG_Tools.CopyValues
             // Get UIApplication
             UIApplication uiapp = commandData.Application;
             // Get app
-            Application app = uiapp.Application;
+            //Application app = uiapp.Application;
 
-            List<Parameter> instParams = getInstParameters(uidoc, doc);
-            List<Parameter> typeParams = getTypeParameters(uidoc, doc);
-
-            List<Parameter> mergedParams = new List<Parameter>();
-            mergedParams.AddRange(instParams);
-            mergedParams.AddRange(typeParams);
-            ObservableCollection<ParameterWrapper> parametersAll = new ObservableCollection<ParameterWrapper>();
-
-            foreach (Parameter param in mergedParams)
+            try
             {
-                parametersAll.Add(new ParameterWrapper() { Id = 1, Name = param.Definition.Name, Param = param });
+
+                //EXTERNAL EVENTS WITH ARGUMENTS
+                EventHandlerWithStringArg evStr = new EventHandlerWithStringArg();
+                CopyValuesWPFWrappedEvent evWpf = new CopyValuesWPFWrappedEvent();
+                
+                ICollection<ElementId> selectedElements = GetSelection(uidoc);
+
+                if (selectedElements != null)
+                {
+                    ObservableCollection<ParameterWrapper> parametersAll = GetWrappedParameters(doc, selectedElements);
+
+                    // The dialog becomes the owner responsible for disposing the objects given to it.
+                    _mMyForm = new CopyValuesWPF(uiapp, evStr, evWpf);
+                    _mMyForm.Show(); //Modeless
+                                     //_mMyForm.ShowDialog(); //Modal
+                    viewmodelCopyValues vModel = new viewmodelCopyValues
+                    {
+                        Params = parametersAll,
+                        Selected = selectedElements
+                    };
+                    _mMyForm.Selectedui = selectedElements;
+                    _mMyForm.DataContext = vModel;
+                    _mMyForm.ComboFrom.SelectedIndex = 0;
+                    _mMyForm.ComboTo.SelectedIndex = 1;
+
+                    return Result.Succeeded;
+                } else
+                {
+                    return Result.Cancelled;
+                }
             }
-
-            BaseViewModel vModel = new BaseViewModel();
-            vModel.Params = parametersAll;
-
-            CopyValuesWPF dlg = new CopyValuesWPF();
-            dlg.ShowDialog();
-
-
-            return Result.Succeeded;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error occured");
+                return Result.Failed;
+            }
 
         }
 
-        public static List<Parameter> getInstParameters(UIDocument uidoc, Document doc)
+
+        public static ObservableCollection<ParameterWrapper> GetWrappedParameters(Document doc, ICollection<ElementId> selectedElements)
         {
-            ICollection<ElementId> selectedElements = uidoc.Selection.GetElementIds();
+            ObservableCollection<ParameterWrapper> parametersAll = new ObservableCollection<ParameterWrapper>();
+
+
+            List<Parameter> instParams = GetInstParameters( doc, selectedElements);
+            foreach (Parameter param in instParams)
+            {
+                if (param.IsShared)
+                {
+                    parametersAll.Add(new ParameterWrapper() { Id = param.Id.IntegerValue, Name = param.Definition.Name + " [" + param.Id.ToString() + "]", Param = param, IsInstance = true });
+                }
+                else
+                {
+                    parametersAll.Add(new ParameterWrapper() { Id = param.Id.IntegerValue, Name = param.Definition.Name, Param = param, IsInstance = true });
+                }
+            }
+            List<Parameter> typeParams = GetTypeParameters( doc, selectedElements);
+            foreach (Parameter param in typeParams)
+            {
+                if (param.IsShared)
+                {
+                    parametersAll.Add(new ParameterWrapper() { Id = param.Id.IntegerValue, Name = param.Definition.Name + " [" + param.Id.ToString() + "]", Param = param, IsInstance = true });
+                }
+                else
+                {
+                    parametersAll.Add(new ParameterWrapper() { Id = param.Id.IntegerValue, Name = param.Definition.Name, Param = param, IsInstance = false });
+                }
+            }
+            return parametersAll;
+        }
+
+        public static List<Parameter> GetInstParameters(Document doc, ICollection<ElementId> selectedElements)
+        {
             List<Parameter> instParams = new List<Parameter>();
+            List<ElementId> instParamsIds = new List<ElementId>();
             foreach (ElementId elementId in selectedElements)
             {
                 Element elem = doc.GetElement(elementId);
@@ -68,9 +121,10 @@ namespace RG_Tools.CopyValues
                 {
                     foreach (Parameter param in elem.GetOrderedParameters())
                     {
-                        if (param != null)
+                        if (param != null & !instParamsIds.Contains(param.Id))
                         {
                             instParams.Add(param);
+                            instParamsIds.Add(param.Id);
                         }
                     }
                 }
@@ -78,13 +132,10 @@ namespace RG_Tools.CopyValues
             return instParams;
 
         }
-        public static List<Parameter> getTypeParameters(UIDocument uidoc, Document doc)
+        public static List<Parameter> GetTypeParameters(Document doc, ICollection<ElementId> selectedElements)
         {
-            ICollection<ElementId> selectedElements = uidoc.Selection.GetElementIds();
-            List<Parameter> instParams = new List<Parameter>();
             List<Parameter> typeParams = new List<Parameter>();
-
-
+            List<ElementId> typeParamsIds = new List<ElementId>();
             foreach (ElementId elementId in selectedElements)
             {
                 Element elem = doc.GetElement(elementId);
@@ -93,14 +144,17 @@ namespace RG_Tools.CopyValues
                 {
                     foreach (Parameter param in elemType.GetOrderedParameters())
                     {
-                        if (param != null)
+                        if (param != null & !typeParamsIds.Contains(param.Id))
                         {
+                            //List<ElementId> typeParamsIds = typeParams.Select(p => p.Id).ToList();
                             typeParams.Add(param);
+                            typeParamsIds.Add(param.Id);
                         }
                     }
                 }
             }
             return typeParams;
         }
+
     }
 }

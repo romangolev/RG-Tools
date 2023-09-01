@@ -27,7 +27,7 @@ namespace RG_Tools
             // Get app
             Application app = uiapp.Application;
 
-            SEBC dlg = new SEBC(doc, app, uidoc);
+            SEBC dlg = new SEBC(doc, uidoc);
             dlg.ShowDialog();
 
             return Result.Succeeded;

@@ -15,8 +15,18 @@ using AW = Autodesk.Windows;
 
 namespace RG_Tools
 {
-    internal static class RibbonDesigner
+    public static class RibbonDesigner
     {
+        
+        #region LangtypeApp Constructor
+        private static LanguageType _LangtypeApp ;
+        public static LanguageType LangtypeApp 
+        {
+            get { return _LangtypeApp; }
+            set { _LangtypeApp = value; } 
+        }
+        #endregion
+
         // This method Creates Tab by defined name
         public static void CreateOrCheckPanel(UIControlledApplication application, string tabName)
         {
@@ -25,9 +35,9 @@ namespace RG_Tools
                 application.CreateRibbonTab(tabName);
         }
 
-        public static string GetLocalizedResource(LanguageType lang, string name)
+        public static string GetLocalizedResource(string name)
         {
-            switch (lang)
+            switch (LangtypeApp)
             {
                 case LanguageType.English_USA:
                     return ResourcesEN.ResourceManager.GetString(name);

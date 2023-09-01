@@ -12,19 +12,47 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using RG_Tools.DeleteShared;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
+using RG_Tools;
 
 namespace RG_Tools
 {
     /// <summary>
     /// Interaction logic for DeleteSharedWPF.xaml
     /// </summary>
-    public partial class DeleteSharedWPF : UserControl
+    public partial class DeleteSharedWPF : Window
     {
-        public DeleteSharedWPF()
+        private readonly Document _doc;
+        private readonly UIApplication _uiApp;
+        private readonly Autodesk.Revit.ApplicationServices.Application _app;
+        private readonly UIDocument _uiDoc;
+
+        private readonly EventHandlerWithStringArg _mExternalMethodStringArg;
+        private readonly DeleteSharedWPFWrappedEvent _mExternalMethodWpfArg;
+
+
+        public DeleteSharedWPF(UIApplication uiApp, EventHandlerWithStringArg evExternalMethodStringArg,
+            DeleteSharedWPFWrappedEvent eExternalMethodWpfArg)
         {
-            MessageBox.Show("loaded?");
+            _uiDoc = uiApp.ActiveUIDocument;
+            _doc = _uiDoc.Document;
+            _app = _doc.Application;
+            _uiApp = _uiDoc.Application;
+            Closed += MainWindow_Closed;
             InitializeComponent();
+
+            _mExternalMethodStringArg = evExternalMethodStringArg;
+            _mExternalMethodWpfArg = eExternalMethodWpfArg;
+        }
+
+        private void MainWindow_Closed(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void Click(object sender, RoutedEventArgs e)
+        {
+            _mExternalMethodWpfArg.Raise(this);
         }
     }
 }

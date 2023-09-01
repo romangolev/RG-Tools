@@ -70,7 +70,7 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Copies parameter value from one property to another for multiple selected elements. It&apos;s possible to preselect elements or pick them when prompted.
         /// </summary>
         internal static string CopyValuesTooltip {
             get {
@@ -79,7 +79,7 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Completely removes shared parameter from project. Allows to add another shared parameter with the same GUID but different properties after deletion.
         /// </summary>
         internal static string DeleteSharedTooltip {
             get {
@@ -97,7 +97,7 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Creates many RVT, DWG or IFC links at once.
         /// </summary>
         internal static string LinkMoreTooltip {
             get {
@@ -106,7 +106,34 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Create 3D views based on worksets..
+        /// </summary>
+        internal static string Links3DTooltip {
+            get {
+                return ResourceManager.GetString("Links3DTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick the elements to join (group1).
+        /// </summary>
+        internal static string ManyJoinPrompt1 {
+            get {
+                return ResourceManager.GetString("ManyJoinPrompt1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick the elements to join (group2).
+        /// </summary>
+        internal static string ManyJoinPrompt2 {
+            get {
+                return ResourceManager.GetString("ManyJoinPrompt2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Joins multiple elements.
         /// </summary>
         internal static string ManyJoinTooltip {
             get {
@@ -135,7 +162,7 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selects all the Elements of defined Category in Active view.
+        ///   Looks up a localized string similar to Selects all the Elements of defined Category in the project.
         /// </summary>
         internal static string SelectElementsByCategoryTooltip {
             get {
@@ -144,7 +171,7 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Create 3D views based on worksets..
         /// </summary>
         internal static string Worksets3DTooltip {
             get {

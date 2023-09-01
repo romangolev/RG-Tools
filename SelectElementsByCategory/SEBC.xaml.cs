@@ -26,19 +26,19 @@ namespace RG_Tools
     /// </summary>
     public partial class SEBC : System.Windows.Window
     {
-        private Document doc;
-        private Application app;
-        private UIDocument uidoc;
-        private IList<Category> allModelCategories;
+        private readonly Document doc;
+        //private readonly Application app;
+        private readonly UIDocument uidoc;
+        private readonly IList<Category> allModelCategories;
 
-        public SEBC(Document doc, Application app, UIDocument uidoc)
+        public SEBC(Document doc, UIDocument uidoc)
         {
             this.doc = doc;
-            this.app = app;
+            //this.app = app;
             this.uidoc = uidoc;
             InitializeComponent();
             allModelCategories = GetAllModelCategories(doc);
-            AddCheckboxesForCategories(listBox, doc, allModelCategories);
+            AddCheckboxesForCategories((ListBox)this.FindName("listBox"), allModelCategories);
         }
 
         private IList<Category> GetAllModelCategories(Document doc)
@@ -61,7 +61,7 @@ namespace RG_Tools
         private IList<Category> GetCategoriesFromView(Document doc)
         {
             IList<Category> categories = new List<Category>();
-            foreach (Element elem in collectCurrent(doc))
+            foreach (Element elem in CollectCurrent(doc))
             {
                 try
                 {
@@ -102,53 +102,48 @@ namespace RG_Tools
 
 
 
-        private IList<Element> collectCurrent(Document doc)
+        private IList<Element> CollectCurrent(Document doc)
         {
             FilteredElementCollector allElementsInView =
                 new FilteredElementCollector(doc, doc.ActiveView.Id);
             return allElementsInView.WhereElementIsNotElementType().ToElements();
         }
 
-        private void AddCheckboxesForCategories(ListBox lstbox, Document doc, IList<Category> cats)
+        private void AddCheckboxesForCategories(ListBox lstbox, IList<Category> cats)
         {
             foreach (Category c in cats)
             {
                 try
                 {
-                    var txtMsgConversation = new CheckBox()
+                    var CheckBoxItem = new CheckBox
                     {
-
-                        Padding = new Thickness(1),
+                        Margin = new Thickness(0),
+                        Padding = new Thickness(0),
                         IsEnabled = true,
-                        //IsReadOnly = true,
                         Background = Brushes.Transparent,
-                        //Foreground = Brushes.White,
                         Width = 180,
-                        //Height = 15,
                         VerticalAlignment = VerticalAlignment.Top,
                         VerticalContentAlignment = VerticalAlignment.Top,
-                        //Content = UserData.Name, //+ "\n" + UserData.ContactNo,
-                        Content = c.Name //+ "\n" + c.Id.ToString(),
-                        //Margin = new Thickness(10, 10, 10, 10)
+                        Content = c.Name, //+ "\n" + c.Id.ToString(),
+                        Name = string.Concat(c.Name.Where(c => !Char.IsWhiteSpace(c)))
                     };
-                    txtMsgConversation.Name = string.Concat(c.Name.Where(c => !Char.IsWhiteSpace(c)));
                     var SpConversation = new StackPanel() { Orientation = Orientation.Horizontal };
 
-                    SpConversation.Children.Add(txtMsgConversation);
+                    SpConversation.Children.Add(CheckBoxItem);
 
                     var item = new ListBoxItem()
                     {
+                        Margin = new Thickness(0),
                         //Name = c.Name,
                         Content = SpConversation,
                         //Uid = UserData.Id.ToString(CultureInfo.InvariantCulture),
                         //Background = Brushes.Black,
-                        //Foreground = Brushes.White,
+                        Foreground = Brushes.White,
                         //BorderThickness = new Thickness(1),
-                        BorderBrush = Brushes.Gray
+                        BorderBrush = Brushes.Transparent
                     };
 
-                    //item.Tag = "q123";
-                    //item.Name = c.Name;
+
                     lstbox.Items.Add(item);
                 }
                 catch (Exception ex)
@@ -203,7 +198,7 @@ namespace RG_Tools
             }
             this.Close();
         }
-        public event EventHandler? CheckedChanged;
+        public event EventHandler CheckedChanged;
 
         private void CheckBox1_CheckedChanged(Object sender, EventArgs e)
         {
@@ -211,14 +206,14 @@ namespace RG_Tools
             if (state == true)
             {
                 listBox.Items.Clear();
-                AddCheckboxesForCategories(listBox, doc, GetCategoriesFromView(doc));
+                AddCheckboxesForCategories(listBox, GetCategoriesFromView(doc));
             }
             else if (state == false)
             {
                 listBox.Items.Clear();
-                AddCheckboxesForCategories(listBox, doc, allModelCategories);
+                AddCheckboxesForCategories(listBox, allModelCategories);
             }
-            MessageBox.Show(state.ToString());
+            //MessageBox.Show(state.ToString());
         }
 
         private T FindChild<T>(DependencyObject parent, string childName) where T : DependencyObject
@@ -233,8 +228,7 @@ namespace RG_Tools
             {
                 var child = VisualTreeHelper.GetChild(parent, i);
                 // If the child is not of the request child type child
-                T childType = child as T;
-                if (childType == null)
+                if (!(child is T t))
                 {
                     // recursively drill down the tree
                     foundChild = FindChild<T>(child, childName);
@@ -244,19 +238,18 @@ namespace RG_Tools
                 }
                 else if (!string.IsNullOrEmpty(childName))
                 {
-                    var frameworkElement = child as FrameworkElement;
                     // If the child's name is set for search
-                    if (frameworkElement != null && frameworkElement.Name == childName)
+                    if (child is FrameworkElement frameworkElement && frameworkElement.Name == childName)
                     {
                         // if the child's name is of the request name
-                        foundChild = (T)child;
+                        foundChild = t;
                         break;
                     }
                 }
                 else
                 {
                     // child element found.
-                    foundChild = (T)child;
+                    foundChild = t;
                     break;
                 }
             }

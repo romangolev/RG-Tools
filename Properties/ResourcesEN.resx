@@ -121,19 +121,28 @@
     <value>Creates coordination plan that unveils Project Base point and Survey Point </value>
   </data>
   <data name="CopyValuesTooltip" xml:space="preserve">
-    <value />
+    <value>Copies parameter value from one property to another for multiple selected elements. It's possible to preselect elements or pick them when prompted</value>
   </data>
   <data name="DeleteSharedTooltip" xml:space="preserve">
-    <value />
+    <value>Completely removes shared parameter from project. Allows to add another shared parameter with the same GUID but different properties after deletion</value>
   </data>
   <data name="InfoTooltip" xml:space="preserve">
     <value>Provides help and information about Add-in</value>
   </data>
   <data name="LinkMoreTooltip" xml:space="preserve">
-    <value />
+    <value>Creates many RVT, DWG or IFC links at once</value>
+  </data>
+  <data name="Links3DTooltip" xml:space="preserve">
+    <value>Create 3D views based on worksets.</value>
+  </data>
+  <data name="ManyJoinPrompt1" xml:space="preserve">
+    <value>Pick the elements to join (group1)</value>
+  </data>
+  <data name="ManyJoinPrompt2" xml:space="preserve">
+    <value>Pick the elements to join (group2)</value>
   </data>
   <data name="ManyJoinTooltip" xml:space="preserve">
-    <value />
+    <value>Joins multiple elements</value>
   </data>
   <data name="NavisViewTooltip" xml:space="preserve">
     <value>Creates new 3D View for Navisworks export (Hides all annotations, imports, etc.)  Searches for existing 3D Views, gives an option to open existing view and create new one.
@@ -144,9 +153,9 @@ Hold SHIFT to create view with Revit links turned-on.</value>
     <value>Checks if Revit Links are pinned and if they belong to a separated individual worksets which names start from ##RVT_). Fixes those issues if found any</value>
   </data>
   <data name="SelectElementsByCategoryTooltip" xml:space="preserve">
-    <value>Selects all the Elements of defined Category in Active view</value>
+    <value>Selects all the Elements of defined Category in the project</value>
   </data>
   <data name="Worksets3DTooltip" xml:space="preserve">
-    <value />
+    <value>Create 3D views based on worksets.</value>
   </data>
 </root>

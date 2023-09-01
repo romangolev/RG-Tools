@@ -4,35 +4,43 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RG_Tools" 
-             xmlns:viewmodel="clr-namespace:RG_Tools.CopyValues"
+             xmlns:viewmodel="clr-namespace:RG_Tools"
              mc:Ignorable="d" 
              Title="Copy Values" Width="500" ResizeMode="NoResize" Height="150"
              WindowStartupLocation="CenterScreen">
-    <Window.Resources>
-        <viewmodel:BaseViewModel x:Key="vm"></viewmodel:BaseViewModel>
-    </Window.Resources>
-    
-    
+    <Window.DataContext>
+        <local:viewmodelCopyValues/>
+    </Window.DataContext>
+
     <Grid>
-        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250" />
             <!-- Or Auto -->
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0"  DataContext="{Binding Source={StaticResource vm}}">
+        <StackPanel Grid.Column="0" >
             <TextBlock Text="Parameter's values to copy from:" Margin="5,5" />
-            <ComboBox Margin="5,5" 
-                      ItemsSource="{Binding Path=Params}"
-                      SelectedItem="{Binding Path=SParam}"
-                      DisplayMemberPath="Name"/>
-            <Button Content="Rewrite ---->" Width="165" Margin="7,10,7,7"/>
-            <Button Height="25" Width="180" Margin="3" Content="{Binding Test}"/>
-
+            <ComboBox 
+                x:Name="ComboFrom"
+                Margin="5,5" 
+                DisplayMemberPath="Name"
+                ItemsSource="{Binding Params}"
+                SelectedItem="{Binding FromParam}"/>
+            <Button 
+                Content="Rewrite ---->" 
+                Width="165" 
+                Margin="7,10,7,7"  
+                Click="Click"/>
         </StackPanel>
         <StackPanel Grid.Column="1" >
             <TextBlock Text="Parameter to write:" Margin="5,5" />
-            <ComboBox  Margin="5,5" />
+            <ComboBox  
+                x:Name="ComboTo"
+                Margin="5,5" 
+                DisplayMemberPath="Name"
+                ItemsSource="{Binding Params}"
+                SelectedItem="{Binding ToParam}"/>
         </StackPanel>
+        
     </Grid>
 </Window>

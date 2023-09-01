@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RG_Tools.Helpers
+namespace RG_Tools
 {
-    public class ParameterWrapper
+    public class SharedParamWrapper
     {
         private int _id;
 
@@ -24,9 +24,9 @@ namespace RG_Tools.Helpers
             set { _name = value; }
         }
 
-        private Parameter _param;
+        private SharedParameterElement _param;
 
-        public Parameter Param
+        public SharedParameterElement Param
         {
             get { return _param; }
             set { _param = value; }

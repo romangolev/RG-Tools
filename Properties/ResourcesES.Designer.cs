@@ -70,7 +70,7 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Copia el valor del parámetro de una propiedad a otra para varios elementos seleccionados. Es posible preseleccionar elementos o seleccionarlos cuando se le solicite.
         /// </summary>
         internal static string CopyValuesTooltip {
             get {
@@ -79,7 +79,7 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Elimina completamente el parámetro compartido del proyecto. Permite agregar otro parámetro compartido con el mismo GUID pero diferentes propiedades después de la eliminación.
         /// </summary>
         internal static string DeleteSharedTooltip {
             get {
@@ -97,7 +97,7 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Crea múltiples vínculos RVT, DWG o IFC a la vez.
         /// </summary>
         internal static string LinkMoreTooltip {
             get {
@@ -106,7 +106,34 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Crea vistas 3D basadas en subproyectos..
+        /// </summary>
+        internal static string Links3DTooltip {
+            get {
+                return ResourceManager.GetString("Links3DTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elige los elementos a unir (grupo1).
+        /// </summary>
+        internal static string ManyJoinPrompt1 {
+            get {
+                return ResourceManager.GetString("ManyJoinPrompt1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elige los elementos a unir (grupo2).
+        /// </summary>
+        internal static string ManyJoinPrompt2 {
+            get {
+                return ResourceManager.GetString("ManyJoinPrompt2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Une múltiples elementos.
         /// </summary>
         internal static string ManyJoinTooltip {
             get {
@@ -128,7 +155,7 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Comprueba si los vínculos de Revit están anclados y si pertenecen a conjuntos de trabajo individuales separados cuyos nombres comienzan con ##RVT_). Soluciona esos problemas si encuentra alguno..
         /// </summary>
         internal static string ReviewLinksTooltip {
             get {
@@ -137,7 +164,7 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Selecciona todos los elementos de la categoría definida en el proyecto..
         /// </summary>
         internal static string SelectElementsByCategoryTooltip {
             get {
@@ -146,7 +173,7 @@ namespace RG_Tools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Cree vistas 3D basadas en subproyectos..
         /// </summary>
         internal static string Worksets3DTooltip {
             get {
